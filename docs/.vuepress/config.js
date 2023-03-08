@@ -1,9 +1,9 @@
 const nav = require('./config/nav.js');
 
 module.exports = {
-  title: "Vdoing's blog",
+  title: "Kc's blog",
   description: 'web前端技术博客,简洁至上,专注web前端学习与总结。JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github等技术文章。', // 描述,以 <meta> 标签渲染到页面html中
-  base: '/vdoing-demo-blog/', // '/<github仓库名>/'， 默认'/' 
+  base: '/kcblog/', // '/<github仓库名>/'， 默认'/' 
   head: [
     ['link', { rel: 'icon', href: '/img/favicon.ico' }], //favicons，资源放在public文件夹
     ['meta', { name: 'keywords', content: '前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown' }],

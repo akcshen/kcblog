@@ -6,19 +6,18 @@ module.exports = {
   base: '/vdoing-demo-blog/', // '/<github仓库名>/'， 默认'/' 
   head: [
     ['link', { rel: 'icon', href: '/img/favicon.ico' }], //favicons，资源放在public文件夹
-    ['meta', { name: 'keywords', content: '前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown'}],
-    ['meta', { name: 'theme-color', content: '#11a8cd'}], // 移动浏览器主题颜色
+    ['meta', { name: 'keywords', content: '前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown' }],
+    ['meta', { name: 'theme-color', content: '#11a8cd' }], // 移动浏览器主题颜色
   ],
   markdown: {
     lineNumbers: true // 代码行号
   },
   theme: 'vdoing', // 使用依赖包主题
-  // theme: require.resolve('../../theme-vdoing'), // 使用本地主题
   themeConfig: { // 主题配置
     nav,
     sidebarDepth: 2, // 侧边栏显示深度，默认1，最大2（显示到h3标题）
-    logo: '/img/EB-logo.png', // 导航栏logo
-    repo: 'xugaoyi/vuepress-theme-vdoing', // 导航栏右侧生成Github链接
+    logo: 'logo.jpeg', // 导航栏logo
+    repo: 'akcshen/kcblog', // 导航栏右侧生成Github链接
     searchMaxSuggestions: 10, // 搜索结果显示最大数
     lastUpdated: '上次更新', // 更新的时间，及前缀文字   string | boolean (取值为git提交时间)
     docsDir: 'docs', // 编辑的文件夹
@@ -48,39 +47,39 @@ module.exports = {
     //   showToArticle: true, // 显示到文章页底部，默认true
     //   moreArticle: '/archives' // “更多文章”跳转的页面，默认'/archives'
     // },
-    
+
     author: { // 文章默认的作者信息，可在md文件中单独配置此信息 String | {name: String, href: String}
-      name: 'Evan Xu', // 必需
-      href: 'https://github.com/xugaoyi' // 可选的
+      name: 'kc_shen', // 必需
+      href: 'https://github.com/akcshen' // 可选的
     },
-    blogger:{ // 博主信息，显示在首页侧边栏
-      avatar: 'https://cdn.jsdelivr.net/gh/xugaoyi/image_store/blog/20200103123203.jpg',
-      name: 'Evan Xu',
+    blogger: { // 博主信息，显示在首页侧边栏
+      avatar: 'logo.jpeg',
+      name: 'kcqingfeng',
       slogan: '前端界的小学生'
     },
-    social:{ // 社交图标，显示于博主信息栏和页脚栏
+    social: { // 社交图标，显示于博主信息栏和页脚栏
       // iconfontCssFile: '//at.alicdn.com/t/font_1678482_u4nrnp8xp6g.css', // 可选，阿里图标库在线css文件地址，对于主题没有的图标可自由添加
       icons: [
         {
           iconClass: 'icon-youjian',
           title: '发邮件',
-          link: 'mailto:894072666@qq.com'
+          link: 'mailto:kcqingfeng@gmail.com'
         },
         {
           iconClass: 'icon-github',
           title: 'GitHub',
-          link: 'https://github.com/xugaoyi'
+          link: 'https://github.com/akcshen'
         },
-        {
-          iconClass: 'icon-erji',
-          title: '听音乐',
-          link: 'https://music.163.com/#/playlist?id=755597173'
-        }
+        // {
+        //   iconClass: 'icon-erji',
+        //   title: '听音乐',
+        //   link: 'https://music.163.com/#/playlist?id=755597173'
+        // }
       ]
     },
-    footer:{ // 页脚信息
+    footer: { // 页脚信息
       createYear: 2019, // 博客创建年份
-      copyrightInfo: 'Evan Xu | MIT License', // 博客版权信息，支持a标签
+      copyrightInfo: 'kc shen | MIT License', // 博客版权信息，支持a标签
     }
   },
   plugins: [ // 插件
@@ -89,27 +88,27 @@ module.exports = {
       excludeClassName: 'theme-vdoing-content' // 要排除元素的class, 默认空''
     }],
 
-    ['thirdparty-search', { // 可以添加第三方搜索链接的搜索框（原官方搜索框的参数仍可用）
-      thirdparty: [ // 可选，默认 []
-        {
-          title: '在MDN中搜索',
-          frontUrl: 'https://developer.mozilla.org/zh-CN/search?q=', // 搜索链接的前面部分
-          behindUrl: '' // 搜索链接的后面部分，可选，默认 ''
-        },
-        {
-          title: '在Runoob中搜索',
-          frontUrl: 'https://www.runoob.com/?s=',
-        },
-        {
-          title: '在Vue API中搜索',
-          frontUrl: 'https://cn.vuejs.org/v2/api/#',
-        },
-        {
-          title: '在Bing中搜索',
-          frontUrl: 'https://cn.bing.com/search?q='
-        }
-      ]
-    }],
+    // ['thirdparty-search', { // 可以添加第三方搜索链接的搜索框（原官方搜索框的参数仍可用）
+    //   thirdparty: [ // 可选，默认 []
+    //     {
+    //       title: '在MDN中搜索',
+    //       frontUrl: 'https://developer.mozilla.org/zh-CN/search?q=', // 搜索链接的前面部分
+    //       behindUrl: '' // 搜索链接的后面部分，可选，默认 ''
+    //     },
+    //     {
+    //       title: '在Runoob中搜索',
+    //       frontUrl: 'https://www.runoob.com/?s=',
+    //     },
+    //     {
+    //       title: '在Vue API中搜索',
+    //       frontUrl: 'https://cn.vuejs.org/v2/api/#',
+    //     },
+    //     {
+    //       title: '在Bing中搜索',
+    //       frontUrl: 'https://cn.bing.com/search?q='
+    //     }
+    //   ]
+    // }],
 
     // 'vuepress-plugin-baidu-autopush', // 百度自动推送
 
@@ -132,7 +131,7 @@ module.exports = {
     [
       'vuepress-plugin-zooming', // 放大图片
       {
-        selector:'.theme-vdoing-content img:not(.no-zoom)',
+        selector: '.theme-vdoing-content img:not(.no-zoom)',
         options: {
           bgColor: 'rgba(0,0,0,0.6)'
         },
@@ -147,7 +146,7 @@ module.exports = {
     [
       'vuepress-plugin-comment', // 评论
       {
-        choosen: 'gitalk', 
+        choosen: 'gitalk',
         options: {
           clientID: 'a6e1355287947096b88b',
           clientSecret: 'f0e77d070fabfcd5af95bebb82b2d574d7248d71',
@@ -159,7 +158,7 @@ module.exports = {
           id: "<%- (frontmatter.permalink || frontmatter.to.path).slice(-16) %>", //  页面的唯一标识,长度不能超过50
           title: "「评论」<%- frontmatter.title %>", // GitHub issue 的标题
           labels: ["Gitalk", "Comment"], // GitHub issue 的标签
-          body:"页面：<%- window.location.origin + (frontmatter.to.path || window.location.pathname) %>" // GitHub issue 的内容
+          body: "页面：<%- window.location.origin + (frontmatter.to.path || window.location.pathname) %>" // GitHub issue 的内容
         }
       }
     ],

@@ -23,7 +23,6 @@ module.exports = {
     docsDir: 'docs', // 编辑的文件夹
     editLinks: true, // 编辑链接
     editLinkText: '编辑',
-
     // 以下配置是Vdoing主题改动的和新增的配置
     // category: false, // 是否打开分类功能，默认true。 如打开，会做的事情有：1. 自动生成的frontmatter包含分类字段 2.页面中显示与分类相关的信息和模块 3.自动生成分类页面（在@pages文件夹）。如关闭，则反之。
     // tag: false, // 是否打开标签功能，默认true。 如打开，会做的事情有：1. 自动生成的frontmatter包含标签字段 2.页面中显示与标签相关的信息和模块 3.自动生成标签页面（在@pages文件夹）。如关闭，则反之。
@@ -70,11 +69,11 @@ module.exports = {
           title: 'GitHub',
           link: 'https://github.com/akcshen'
         },
-        // {
-        //   iconClass: 'icon-erji',
-        //   title: '听音乐',
-        //   link: 'https://music.163.com/#/playlist?id=755597173'
-        // }
+        {
+          iconClass: 'icon-QQ',
+          title: '听音乐',
+          link: 'https://music.163.com/#/playlist?id=755597173'
+        }
       ]
     },
     footer: { // 页脚信息
@@ -146,19 +145,12 @@ module.exports = {
     [
       'vuepress-plugin-comment', // 评论
       {
-        choosen: 'gitalk',
+        // choosen: 'gitalk',
+        choosen: 'valine',
         options: {
-          clientID: '9d7d3f6babfdf59847f0',
-          clientSecret: 'b0c469cfe1d0c737d9fb5a2db0e39421806d7330',
-          repo: 'kcblog', // GitHub 仓库
-          owner: 'akcshen', // GitHub仓库所有者
-          admin: ['akcshen'], // 对仓库有写权限的人
-          // distractionFreeMode: true,
-          pagerDirection: 'last', // 'first'正序 | 'last'倒序
-          id: "<%- (frontmatter.permalink || frontmatter.to.path).slice(-16) %>", //  页面的唯一标识,长度不能超过50
-          title: "「评论」<%- frontmatter.title %>", // GitHub issue 的标题
-          labels: ["Gitalk", "Comment"], // GitHub issue 的标签
-          body: "页面：<%- window.location.origin + (frontmatter.to.path || window.location.pathname) %>" // GitHub issue 的内容
+          el: '#valine-vuepress-comment',
+          appId: 'TrwDB2SNu15HXbHJPE7wtdSS-gzGzoHsz',
+          appKey: '24rymEMKNF0Mapx6EuN1NvRT'
         }
       }
     ],

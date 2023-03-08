@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>oppo 快应用广告多次回调问题 | Kc&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/kcblog/img/favicon.ico">
+    <meta name="description" content="web前端技术博客,简洁至上,专注web前端学习与总结。JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github等技术文章。">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/kcblog/assets/css/0.styles.bf256c1c.css" as="style"><link rel="preload" href="/kcblog/assets/js/app.e610843a.js" as="script"><link rel="preload" href="/kcblog/assets/js/2.2d7e1617.js" as="script"><link rel="preload" href="/kcblog/assets/js/10.d4678b7f.js" as="script"><link rel="prefetch" href="/kcblog/assets/js/11.e124ea47.js"><link rel="prefetch" href="/kcblog/assets/js/12.d26c38a0.js"><link rel="prefetch" href="/kcblog/assets/js/13.9dad20e8.js"><link rel="prefetch" href="/kcblog/assets/js/14.81391fe5.js"><link rel="prefetch" href="/kcblog/assets/js/15.9aa434a7.js"><link rel="prefetch" href="/kcblog/assets/js/16.3ab94dd1.js"><link rel="prefetch" href="/kcblog/assets/js/17.a912ff25.js"><link rel="prefetch" href="/kcblog/assets/js/18.a1851375.js"><link rel="prefetch" href="/kcblog/assets/js/19.47af4567.js"><link rel="prefetch" href="/kcblog/assets/js/20.c11568ff.js"><link rel="prefetch" href="/kcblog/assets/js/3.9ea4fdf3.js"><link rel="prefetch" href="/kcblog/assets/js/4.44999597.js"><link rel="prefetch" href="/kcblog/assets/js/5.2ab22407.js"><link rel="prefetch" href="/kcblog/assets/js/6.5ba24abd.js"><link rel="prefetch" href="/kcblog/assets/js/7.6b9c4b2e.js"><link rel="prefetch" href="/kcblog/assets/js/8.8e20c7e9.js"><link rel="prefetch" href="/kcblog/assets/js/9.60e80a43.js">
+    <link rel="stylesheet" href="/kcblog/assets/css/0.styles.bf256c1c.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container have-rightmenu have-body-img"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/kcblog/" class="home-link router-link-active"><img src="logo.jpeg" alt="Kc's blog" class="logo"> <span class="site-name can-hide">Kc's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/kcblog/" class="nav-link">首页</a></div><div class="nav-item"><a href="/kcblog/categories/" class="nav-link">分类</a></div><div class="nav-item"><a href="/kcblog/tags/" class="nav-link">标签</a></div><div class="nav-item"><a href="/kcblog/about/" class="nav-link">关于</a></div><div class="nav-item"><a href="/kcblog/friends/" class="nav-link">友链</a></div><div class="nav-item"><a href="/kcblog/archives/" class="nav-link">归档</a></div> <a href="https://github.com/akcshen/kcblog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="logo.jpeg"> <div class="blogger-info"><h3>kcqingfeng</h3> <span>前端界的小学生</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/kcblog/" class="nav-link">首页</a></div><div class="nav-item"><a href="/kcblog/categories/" class="nav-link">分类</a></div><div class="nav-item"><a href="/kcblog/tags/" class="nav-link">标签</a></div><div class="nav-item"><a href="/kcblog/about/" class="nav-link">关于</a></div><div class="nav-item"><a href="/kcblog/friends/" class="nav-link">友链</a></div><div class="nav-item"><a href="/kcblog/archives/" class="nav-link">归档</a></div> <a href="https://github.com/akcshen/kcblog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>oppo 快应用广告多次回调问题</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/kcblog/pages/08acae/#_1-遇到的问题" class="sidebar-link">1.遇到的问题：</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/kcblog/pages/08acae/#针对问题-想解决方案" class="sidebar-link">针对问题，想解决方案：</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/kcblog/pages/08acae/#_1-pass" class="sidebar-link">1.(pass)</a></li><li class="sidebar-sub-header level3"><a href="/kcblog/pages/08acae/#_2-pass" class="sidebar-link">2.(pass)</a></li><li class="sidebar-sub-header level3"><a href="/kcblog/pages/08acae/#_3-目前在用的" class="sidebar-link">3.目前在用的</a></li></ul></li></ul></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-e1efabd0><div class="articleInfo" data-v-e1efabd0><!----> <div class="info" data-v-e1efabd0><div title="作者" class="author iconfont icon-touxiang" data-v-e1efabd0><a href="https://github.com/akcshen" target="_blank" title="作者" class="beLink" data-v-e1efabd0>kc_shen</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-e1efabd0><a href="javascript:;" data-v-e1efabd0>2023-03-06</a></div> <div title="分类" class="date iconfont icon-wenjian" data-v-e1efabd0><a href="/kcblog/categories/?category=%E5%BF%AB%E5%BA%94%E7%94%A8" data-v-e1efabd0>快应用 </a></div></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">oppo 快应用广告多次回调问题<!----></h1> <!----> <div class="theme-vdoing-content content__default"><h2 id="_1-遇到的问题"><a href="#_1-遇到的问题" class="header-anchor">#</a> 1.遇到的问题：</h2> <p>可能是因为在 oppo 快应用中，每个页面都是一个单独的 NativeObject 实例，当同时发起两个请求时，它们的回调函数可能会被存储在同一个 NativeObject 实例的同一个成员变量中，导致第二个请求的回调函数会覆盖第一个请求的回调函数，从而导致第二个请求的回调函数被触发时，也会触发第一个请求的回调函数，</p> <p>有问题代码如下：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> ad <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;@service.ad&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">getOppoNativeAd</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">adUnitId</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> nativeAd <span class="token operator">=</span> ad<span class="token punctuation">.</span><span class="token function">createNativeAd</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token literal-property property">adUnitId</span><span class="token operator">:</span> adUnitId<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    nativeAd<span class="token punctuation">.</span><span class="token function">onLoad</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      e<span class="token punctuation">.</span>adList<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>nativeAd <span class="token operator">=</span> nativeAd<span class="token punctuation">;</span>
+      e<span class="token punctuation">.</span>adList<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>isad <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      e<span class="token punctuation">.</span>adList<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>adUnitId <span class="token operator">=</span> adUnitId<span class="token punctuation">;</span>
+
+      <span class="token comment">// 上报曝光</span>
+      nativeAd<span class="token punctuation">.</span><span class="token function">reportAdShow</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">adId</span><span class="token operator">:</span> e<span class="token punctuation">.</span>adList<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>adId<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      nativeAd<span class="token punctuation">.</span><span class="token function">offLoad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      nativeAd<span class="token punctuation">.</span><span class="token function">offError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">resolve</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>adList<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    nativeAd<span class="token punctuation">.</span><span class="token function">onError</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      nativeAd<span class="token punctuation">.</span><span class="token function">offLoad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      nativeAd<span class="token punctuation">.</span><span class="token function">offError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">reject</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    nativeAd<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><h2 id="针对问题-想解决方案"><a href="#针对问题-想解决方案" class="header-anchor">#</a> 针对问题，想解决方案：</h2> <h3 id="_1-pass"><a href="#_1-pass" class="header-anchor">#</a> 1.<strong>(pass)</strong></h3> <p>在多次执行 <code>onLoad</code> 回调时，如果要确定哪次回调属于当前请求，可以在每次请求时给 <code>nativeAd</code> 对象添加一个唯一标识，比如可以添加一个随机数或时间戳，然后在 <code>onLoad</code> 回调中判断这个标识是否与当前请求匹配</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const ad = require(&quot;@service.ad&quot;)
+
+const adRequests = {}
+
+const getOppoNativeAd = (adUnitId) =&gt; {
+  const requestId = Date.now()
+  adRequests[requestId] = { adUnitId }
+
+  return new Promise((resolve, reject) =&gt; {
+    const nativeAd = ad.createNativeAd({
+      adUnitId: adUnitId
+    })
+
+    nativeAd.onLoad((e) =&gt; {
+      const request = adRequests[requestId]
+      if (request &amp;&amp; request.adUnitId === adUnitId) {
+        delete adRequests[requestId]
+
+        e.adList[0].nativeAd = nativeAd
+        e.adList[0].isad = true
+        e.adList[0].adUnitId = adUnitId
+
+        nativeAd.offLoad()
+        nativeAd.offError()
+        resolve(e.adList[0])
+      }
+    })
+
+    nativeAd.onError((err) =&gt; {
+      const request = adRequests[requestId]
+      if (request &amp;&amp; request.adUnitId === adUnitId) {
+        delete adRequests[requestId]
+        nativeAd.offLoad()
+        nativeAd.offError()
+        reject(err)
+      }
+    })
+
+    nativeAd.load()
+  })
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br></div></div><h3 id="_2-pass"><a href="#_2-pass" class="header-anchor">#</a> 2.<strong>(pass</strong>)</h3> <p>对每个请求都创建一个独立的 <code>nativeAd</code> 对象，以避免出现并发请求的问题。</p> <p>同时，你可以在 <code>nativeAd</code> 对象上设置一个自定义属性，例如 <code>requestId</code>，在回调函数中判断这个属性是否和当前请求的 ID 一致，如果不一致则不处理这个回调。可以将请求 ID 存储在请求的 <code>Promise</code> 对象中，每个请求的 ID 都应该是唯一的。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const ad = require('@service.ad')
+
+let requestId = 0
+
+/**
+ * 请求快应用广告
+ * @param {string} adUnitId 广告位 ID
+ * @return {Promise} Promise 对象，resolve 回调函数传递一个广告对象，reject 回调函数传递一个错误对象
+ */
+function requestNativeAd(adUnitId) {
+  requestId++
+
+  const nativeAd = ad.createNativeAd({ adUnitId })
+
+  return new Promise((resolve, reject) =&gt; {
+    const currentRequestId = requestId
+
+    nativeAd.onLoad((event) =&gt; {
+      if (currentRequestId !== requestId) {
+        return
+      }
+
+      const adObj = event.adList[0]
+      adObj.nativeAd = nativeAd
+      adObj.isad = true
+      adObj.adUnitId = adUnitId
+
+      resolve(adObj)
+    })
+
+    nativeAd.onError((event) =&gt; {
+      if (currentRequestId !== requestId) {
+        return
+      }
+
+      reject(event)
+    })
+
+    nativeAd.load()
+  })
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br></div></div><h3 id="_3-目前在用的"><a href="#_3-目前在用的" class="header-anchor">#</a> 3.目前在用的</h3> <p>因为造成这个问题的根源是同时请求了两个广告，这个是 oppo 快应用存在的问题，但是需求是的确需要同时请求多个广告，所以就是前面广告执行完，销毁了广告的回调监听，然后再走下一个广告的拉取，伪代码如下：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">requestAds</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> adTypes <span class="token operator">=</span> <span class="token punctuation">[</span>AdType<span class="token punctuation">.</span><span class="token constant">BANNER</span><span class="token punctuation">,</span> AdType<span class="token punctuation">.</span><span class="token constant">INTERSTITIAL</span><span class="token punctuation">,</span> AdType<span class="token punctuation">.</span><span class="token constant">REWARDED_VIDEO</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> ads <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> adTypes<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> adType <span class="token operator">=</span> adTypes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> ad <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">requestAd</span><span class="token punctuation">(</span>adType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ads<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>ad<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> ads<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>这个是目前能想到的最好的办法，在这个示例代码中，<code>requestAds()</code>函数会按照顺序依次请求三种类型的广告（横幅广告、插屏广告、激励视频广告），并将每个广告的实例添加到<code>ads</code>数组中。<code>requestAd()</code>函数返回一个 Promise 对象，使用<code>await</code>关键字可以等待其完成后再执行下一个循环。</p> <p>但是因为我的需求是多个组件之间的交互，并没有实际去操作，不知道会遇到什么问题，所以还并没有是实际的实现，目前在用的方法就是<strong>定义一个变量，每次只让一个请求进来，其他的直接走 err</strong></p> <p>这个具体的多个页面实现还没空写，直接重构的话，害怕影响其他的机型，等下个产品再来吧</p></div></div> <!----> <div class="page-edit"><div class="edit-link"><a href="https://github.com/akcshen/kcblog/edit/master/docs/_posts/quickapp/2023-03-06.md" target="_blank" rel="noopener noreferrer">编辑</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="tags"><a href="/kcblog/tags/?tag=troubleshooting" title="标签">#troubleshooting</a></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2023/03/08, 5:03:00</span></div></div> <div class="page-nav-wapper"><!----> <!----></div></div> <div class="article-list"><div class="article-title"><a href="/kcblog/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/kcblog/pages/29d263/"><div>
+            readme
+            <!----></div></a> <span class="date">03-08</span></dt></dl><dl><dd>02</dd> <dt><a href="/kcblog/pages/50287b/"><div>
+            华为销毁组件
+            <!----></div></a> <span class="date">02-28</span></dt></dl><dl><dd>03</dd> <dt><a href="/kcblog/pages/926e63/"><div>
+            「No.01」【 快应用广告缩放 】
+            <!----></div></a> <span class="date">02-24</span></dt></dl> <dl><dd></dd> <dt><a href="/kcblog/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><div class="icons"><a href="mailto:kcqingfeng@gmail.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/akcshen" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2019-2023
+    <span>kc shen | MIT License</span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <div class="body-bg" style="background:url() center center / cover no-repeat;opacity:0.5;"></div> <!----> <!----></div><div class="global-ui"><div></div></div></div>
+    <script src="/kcblog/assets/js/app.e610843a.js" defer></script><script src="/kcblog/assets/js/2.2d7e1617.js" defer></script><script src="/kcblog/assets/js/10.d4678b7f.js" defer></script>
+  </body>
+</html>

@@ -41,7 +41,7 @@ module.exports = {
 
     sidebar: 'structuring', // 侧边栏  'structuring' | { mode: 'structuring', collapsable: Boolean} | 'auto' | 自定义    温馨提示：目录页数据依赖于结构化的侧边栏数据，如果你不设置为'structuring',将无法使用目录页
 
-    sidebarOpen: false, // 初始状态是否打开侧边栏，默认true
+    sidebarOpen: true, // 初始状态是否打开侧边栏，默认true
     // updateBar: { // 最近更新栏
     //   showToArticle: true, // 显示到文章页底部，默认true
     //   moreArticle: '/archives' // “更多文章”跳转的页面，默认'/archives'

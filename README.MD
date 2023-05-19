@@ -6,20 +6,28 @@ sidebar: false
 article: false
 ---
 
-### 📚Blog
-
-这是一个 Vdoing 主题的演示博客，正在一步步完善中，冲～
-
-### 🎨Theme
-
-本站主题是根据[VuePress](https://vuepress.vuejs.org/zh/)的默认主题修改而成。取名`Vdoing`(维度)，旨在轻松打造一个`结构化`与`碎片化`并存的个人在线知识库&博客，让你的知识海洋像一本本书一样清晰易读。配合多维索引，让每一个知识点都可以快速定位！ 更多[详情](https://github.com/xugaoyi/vuepress-theme-vdoing)。
-
 ### 🐼Me
 
-从事 （非 Web） 前端开发工作，喜欢唱、跳、rap、篮球，写程序。 本人小学生 ↓↓↓
+大家好，我是`KC(Casie)`,一名~~热衷~~于前端开发的工程师，我的追求：`工作开心不加班，生活快乐无忧虑`
 
 ## :email: 联系
 
 - **WeChat or QQ**: <a :href="qqUrl" class='qq'>965506744</a>
 - **Email**: <a href="mailto:894072666@qq.com">kcqingfeng@gmail.com</a>
 - **GitHub**: <https://github.com/akcshen>
+
+<script>
+  export default {
+    data(){
+      return {
+        qqUrl: 'tencent://message/?uin=965506744&Site=&Menu=yes' 
+      }
+    },
+    mounted(){
+      const flag =  navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i);
+      if(flag){
+        this.qqUrl = 'mqqwpa://im/chat?chat_type=wpa&uin=965506744&version=1&src_type=web&web_src=oicqzone.com'
+      }
+    }
+  }
+</script>

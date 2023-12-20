@@ -93,7 +93,7 @@ module.exports = {
       avatar:
         "https://cdn.jsdelivr.net/gh/akcshen/chartBed@master/assets/img/202303141847699.jpeg",
       name: "kcqingfeng",
-      slogan: "前端界的小学生",
+      slogan: "前端小学生",
     },
     social: {
       // 社交图标，显示于博主信息栏和页脚栏
@@ -112,7 +112,7 @@ module.exports = {
         {
           iconClass: "icon-QQ",
           title: "听音乐",
-          link: "https://music.163.com/#/playlist?id=755597173",
+          link: "https://music.163.com",
         },
       ],
     },

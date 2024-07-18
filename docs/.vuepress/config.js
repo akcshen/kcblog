@@ -28,6 +28,7 @@ module.exports = {
     ],
     ["meta", { name: "theme-color", content: "#11a8cd" }], // 移动浏览器主题颜色
     ["meta", { name: "referrer", content: "no-referrer-when-downgrade" }], // 解决chrome 统计不准确问题
+    ["meta", { name: "baidu_union_verify", content: "fdaccfd0f9b7374669d530cb5b192678" }], // 百度网站认证
     [
       "link",
       {

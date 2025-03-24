@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>评论页面</title>
+  <script src="https://unpkg.com/valine@1.4.14/dist/Valine.min.js"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 10px;
+    }
+    .comment-container {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="comment-container">
+    <div id="vcomments"></div>
+  </div>
+
+  <script>
+    // 获取URL参数
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    // 初始化评论
+    function initComments() {
+      const path = getQueryParam('path');
+      if (!path) {
+        document.getElementById('vcomments').innerHTML = '错误：未指定评论路径';
+        return;
+      }
+
+      new Valine({
+        el: '#vcomments',
+        appId: 'TrwDB2SNu15HXbHJPE7wtdSS-gzGzoHsz',
+        appKey: '24rymEMKNF0Mapx6EuN1NvRT',
+        path: path,
+        placeholder: '欢迎留言讨论~',
+        avatar: 'monsterid',
+        meta: ['nick', 'mail'],
+        pageSize: 10,
+        lang: 'zh-CN',
+        highlight: true,
+        recordIP: true,
+        enableQQ: true
+      });
+    }
+
+    // 当页面加载完成时初始化评论
+    document.addEventListener('DOMContentLoaded', initComments);
+  </script>
+</body>
+</html> 

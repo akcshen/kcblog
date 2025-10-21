@@ -30,3 +30,11 @@ postList: simple
 - `ci` CICD;持续集成相关
 - `types` Type definition;类型定义文件更改
 - `wip` In development;开发中
+
+## 头脑风暴
+
+做什么副业合适呢；
+
+银发经济
+
+开发一个感觉有市场的小程序；

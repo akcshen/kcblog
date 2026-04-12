@@ -30,6 +30,184 @@
       color var(--textColor)!important
 
 
+// 关于页（/about）
+.about-page
+  max-width 640px
+  margin 0 auto 2rem
+  padding 0 .25rem
+
+.about-hero
+  text-align center
+  padding 1.75rem 1.25rem 2rem
+  border-radius 14px
+  border 1px solid var(--borderColor)
+  background linear-gradient(145deg, rgba($accentColor, 0.12) 0%, rgba($accentColor, 0.03) 55%, var(--mainBg) 100%)
+  box-shadow 0 2px 12px rgba(0, 0, 0, 0.04)
+
+.about-emoji
+  font-size 2.75rem
+  line-height 1
+  margin 0 0 .85rem
+  filter drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08))
+
+.about-lead
+  margin 0
+  font-size 1.05rem
+  line-height 1.8
+  color var(--textColor)
+
+.about-motto
+  margin 1.25rem 0 1.75rem
+  padding 1rem 1.15rem 1rem 1.25rem
+  border-radius 0 10px 10px 0
+  border-left 4px solid $accentColor
+  background rgba($accentColor, 0.08)
+
+.about-motto-label
+  display block
+  font-size .75rem
+  font-weight 600
+  letter-spacing .06em
+  text-transform uppercase
+  color $accentColor
+  opacity .9
+  margin-bottom .35rem
+
+.about-motto-text
+  margin 0
+  font-size 1rem
+  line-height 1.65
+  color var(--textColor)
+
+.about-section-title
+  position relative
+  margin 1.75rem 0 .85rem
+  padding-left .65rem
+  font-size 1.15rem
+  font-weight 600
+  color var(--textColor)
+  border-left 3px solid $accentColor
+  line-height 1.3
+
+.about-hobby-grid
+  display grid
+  grid-template-columns repeat(auto-fill, minmax(148px, 1fr))
+  gap .75rem
+
+.about-hobby-card
+  display flex
+  flex-direction column
+  gap .35rem
+  padding .95rem 1rem
+  border-radius 12px
+  border 1px solid var(--borderColor)
+  background var(--mainBg)
+  transition transform .2s ease, box-shadow .2s ease
+  &:hover
+    transform translateY(-3px)
+    box-shadow 0 8px 20px rgba(0, 0, 0, 0.07)
+
+.about-hobby-cat
+  font-size .8rem
+  font-weight 600
+  color $accentColor
+
+// 爱好卡片分栏配色（骑行 / 运动 / 户外 / 折腾）
+$about-hobby-ride = #3498db
+$about-hobby-sport = #e74c3c
+$about-hobby-outdoor = #27ae60
+$about-hobby-gear = #9b59b6
+
+.about-hobby-card--ride
+  border-top 3px solid $about-hobby-ride
+  background linear-gradient(180deg, rgba(52, 152, 219, 0.1) 0%, var(--mainBg) 50%)
+  .about-hobby-cat
+    color $about-hobby-ride !important
+  &:hover
+    box-shadow 0 8px 22px rgba(52, 152, 219, 0.22)
+
+.about-hobby-card--sport
+  border-top 3px solid $about-hobby-sport
+  background linear-gradient(180deg, rgba(231, 76, 60, 0.1) 0%, var(--mainBg) 50%)
+  .about-hobby-cat
+    color $about-hobby-sport !important
+  &:hover
+    box-shadow 0 8px 22px rgba(231, 76, 60, 0.22)
+
+.about-hobby-card--outdoor
+  border-top 3px solid $about-hobby-outdoor
+  background linear-gradient(180deg, rgba(39, 174, 96, 0.1) 0%, var(--mainBg) 50%)
+  .about-hobby-cat
+    color $about-hobby-outdoor !important
+  &:hover
+    box-shadow 0 8px 22px rgba(39, 174, 96, 0.22)
+
+.about-hobby-card--gear
+  border-top 3px solid $about-hobby-gear
+  background linear-gradient(180deg, rgba(155, 89, 182, 0.1) 0%, var(--mainBg) 50%)
+  .about-hobby-cat
+    color $about-hobby-gear !important
+  &:hover
+    box-shadow 0 8px 22px rgba(155, 89, 182, 0.22)
+
+.about-hobby-detail
+  font-size .875rem
+  line-height 1.45
+  color var(--textLightenColor)
+
+.about-contact-list
+  list-style none
+  padding 0
+  margin 0
+  display flex
+  flex-direction column
+  gap .6rem
+
+.about-contact-list li
+  display flex
+  flex-wrap wrap
+  align-items center
+  gap .5rem .75rem
+  padding .75rem 1rem
+  border-radius 12px
+  border 1px solid var(--borderColor)
+  background var(--mainBg)
+  transition background .2s ease
+  &:hover
+    background rgba($accentColor, 0.06)
+
+.about-contact-icon
+  font-size 1.1rem
+  width 1.75rem
+  text-align center
+  flex-shrink 0
+
+.about-contact-label
+  min-width 4.5rem
+  font-size .85rem
+  font-weight 600
+  color var(--textLightenColor)
+
+.about-contact-link
+  color $accentColor !important
+  text-decoration none
+  font-weight 500
+  word-break break-all
+  &:hover
+    text-decoration underline
+
+.theme-mode-dark .about-hero
+  box-shadow 0 2px 16px rgba(0, 0, 0, 0.35)
+
+.theme-mode-dark .about-hobby-card--ride:hover
+  box-shadow 0 8px 26px rgba(52, 152, 219, 0.38)
+.theme-mode-dark .about-hobby-card--sport:hover
+  box-shadow 0 8px 26px rgba(231, 76, 60, 0.38)
+.theme-mode-dark .about-hobby-card--outdoor:hover
+  box-shadow 0 8px 26px rgba(39, 174, 96, 0.38)
+.theme-mode-dark .about-hobby-card--gear:hover
+  box-shadow 0 8px 26px rgba(155, 89, 182, 0.38)
+
 // qq徽章
 .qq
   position: relative;

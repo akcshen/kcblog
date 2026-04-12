@@ -42,4 +42,4 @@ npm run deploy
 
 ## 关于作者与站点
 
-个人介绍与联系方式见站内「关于」页面：`docs/_posts/随笔/01.关于.md`。
+个人介绍与联系方式见站内 [关于页面](https://kcshen.cn/about)；编辑内容可打开仓库里的 [01.关于.md](docs/_posts/随笔/01.关于.md)。

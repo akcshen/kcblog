@@ -30,7 +30,15 @@ npm run deploy
 | 命令 | 说明 |
 |------|------|
 | `npm run editFm` | 批量编辑 frontmatter（`utils/editFrontmatter.js`） |
-| `npm run baiduPush` | 百度推送相关（需配置） |
+| `npm run baiduPush` | 本地生成 `urls.txt` 并调用百度链接提交（见下） |
+
+### 百度链接提交（CI 自动）
+
+推送 `master` 并成功部署到 GitHub Pages 后，工作流会执行 `utils/baiduPush.js` 与 `baiduPush.sh`，向百度提交当前仓库内所有带 `permalink` 的页面地址。
+
+在 GitHub 仓库中配置：**Settings → Secrets and variables → Actions → New repository secret**，名称填写 **`BAIDU_PUSH_TOKEN`**，值为百度站长平台「链接提交」接口里的 **token**（不要写进仓库文件）。站点域名在 workflow 里默认为 `https://kcshen.cn`，与 `BAIDU_PUSH_SITE` 一致。
+
+未配置该 Secret 时，该步骤会跳过在线推送（构建与部署仍会成功）。本地可复制 `.baidu-push.env.example` 为 `.baidu-push.env` 并自行填写 token（该文件已加入 `.gitignore`）。
 
 ## 关于作者与站点
 

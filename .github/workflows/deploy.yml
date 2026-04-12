@@ -33,3 +33,12 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           BRANCH: gh-pages
           FOLDER: docs/.vuepress/dist
+
+      # 部署完成后将站点链接提交给百度站长（token 放在仓库 Secrets，勿写入代码）
+      - name: Submit URLs to Baidu
+        env:
+          BAIDU_PUSH_SITE: https://kcshen.cn
+          BAIDU_PUSH_TOKEN: ${{ secrets.BAIDU_PUSH_TOKEN }}
+        run: |
+          node utils/baiduPush.js https://kcshen.cn
+          bash baiduPush.sh

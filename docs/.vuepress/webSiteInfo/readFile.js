@@ -13,6 +13,17 @@ function readFileList(excludeFiles = [''], dir = docsRoot, filesList = []) {
     const files = fs.readdirSync(dir);
     files.forEach((item, index) => {
         let filePath = path.join(dir, item);
+
+        // ====================== 修复：先判断文件/文件夹是否存在 ======================
+        if (!fs.existsSync(filePath)) {
+            return;
+        }
+
+        // ====================== 修复：自动跳过 坚果云同步 相关文件夹 ======================
+        if (item.includes('坚果云同步') || filePath.includes('坚果云同步')) {
+            return;
+        }
+
         const stat = fs.statSync(filePath);
         if (!(excludeFiles instanceof Array)) {
             log(chalk.yellow(`error: 传入的参数不是一个数组。`))

@@ -1,0 +1,587 @@
+:root {
+  --vp-c-brand-1: #11a8cd;
+  --vp-c-brand-2: #0b91b1;
+  --vp-c-brand-3: #0d7f9a;
+  --vp-c-brand-soft: rgba(17, 168, 205, 0.14);
+}
+
+/* ---------- Nav（贴近旧站毛玻璃顶栏） ---------- */
+.VPNavBar {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--vp-c-divider) !important;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+  transition: background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.VPNavBar .VPNavBarTitle .logo,
+.VPNavBar .VPImage.logo {
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 2px rgba(17, 168, 205, 0.18);
+}
+
+.VPNavBar .title {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.VPNavBarMenuLink,
+.VPNavBarMenuGroup .button {
+  margin: 0 0.1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.VPNavBarMenuLink:hover,
+.VPNavBarMenuGroup .button:hover {
+  color: var(--vp-c-brand-1) !important;
+  background: var(--vp-c-brand-soft);
+}
+
+.VPNavBarMenuLink.active {
+  color: var(--vp-c-brand-1) !important;
+}
+
+.VPNavScreenMenuLink:hover,
+.VPNavScreenMenuGroup .button:hover {
+  color: var(--vp-c-brand-1);
+}
+
+.VPNavBarSearch .DocSearch-Button,
+.VPLocalSearchBox .prompt {
+  border-radius: 999px !important;
+}
+
+.dark .VPNavBar {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.dark .VPNavBar .VPNavBarTitle .logo,
+.dark .VPNavBar .VPImage.logo {
+  box-shadow: 0 0 0 2px rgba(17, 168, 205, 0.28);
+}
+
+/* ---------- 卡片 / 内容区质感 ---------- */
+.tk-post-item,
+.tk-article-card,
+.VPFeature,
+.share-card,
+.tk-card {
+  border-radius: 12px !important;
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 85%, transparent);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.tk-post-item:hover,
+.tk-article-card:hover,
+.VPFeature:hover,
+.share-card:hover,
+.tk-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  border-color: color-mix(in srgb, var(--vp-c-brand-1) 35%, var(--vp-c-divider));
+}
+
+.VPDoc .content-container,
+.VPContent .container {
+  border-radius: 12px;
+}
+
+.VPSidebar {
+  backdrop-filter: blur(8px);
+}
+
+.dark .tk-post-item,
+.dark .tk-article-card,
+.dark .VPFeature,
+.dark .share-card,
+.dark .tk-card {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+/* ---------- 首页：贴近旧站 vdoing ---------- */
+.tk-home-main {
+  --tk-home-banner-part-min-height: 300px;
+}
+
+.tk-banner .tk-banner__content {
+  min-height: var(--tk-home-banner-part-min-height) !important;
+  height: auto !important;
+  padding-bottom: 1.5rem !important;
+}
+
+.tk-banner-content__title {
+  font-weight: 700 !important;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.35);
+}
+
+.tk-banner-content__desc {
+  opacity: 0.92;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.dark .tk-banner {
+  --tk-banner-text-color: #e8f4f8 !important;
+}
+
+.dark .tk-banner-content__title,
+.dark .tk-banner-content__desc {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+/* 半透明卡片叠在背景图上 */
+.tk-home-main .tk-page-card,
+.tk-home-main .tk-post.is-list .tk-article-title,
+.tk-home-main .tk-post.is-list li > a,
+.tk-home-main .tk-post .tk-post-item {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 8px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.tk-home-main .tk-page-card:hover,
+.tk-home-main .tk-post.is-list .tk-article-title:hover,
+.tk-home-main .tk-post .tk-post-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18) !important;
+}
+
+.tk-home-main .tk-post.is-list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tk-home-main .tk-post.is-list .tk-article-title {
+  padding: 0.85rem 1rem 0.85rem 1.35rem !important;
+}
+
+.tk-home-main .tk-post.is-list .tk-article-title:before {
+  left: 12px !important;
+  top: 50% !important;
+  transform: translateY(-50%);
+  height: 14px !important;
+  background-color: var(--vp-c-brand-1) !important;
+}
+
+/* 首页不要分页：只留最近 pageSize 条 */
+.tk-home-main .tk-post__pagination,
+.tk-home-main .tk-pagination,
+.tk-home-main .el-pagination {
+  display: none !important;
+}
+
+.dark .tk-home-main .tk-page-card,
+.dark .tk-home-main .tk-post.is-list .tk-article-title,
+.dark .tk-home-main .tk-post .tk-post-item {
+  background: rgba(45, 45, 45, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.55) !important;
+}
+
+.dark .tk-home-main .tk-page-card:hover,
+.dark .tk-home-main .tk-post.is-list .tk-article-title:hover,
+.dark .tk-home-main .tk-post .tk-post-item:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.75) !important;
+}
+
+/* ---------- About page ---------- */
+.about-page {
+  --about-warm: #b57a3a;
+  --about-cream: #f8f3ea;
+  --about-ink: #3d342c;
+  --about-muted: #7a6a58;
+  --about-line: rgba(140, 100, 55, 0.18);
+  --about-hobby-ride: #a86b32;
+  --about-hobby-sport: #9a5538;
+  --about-hobby-outdoor: #7d6b3e;
+  --about-hobby-gear: #8a7260;
+  --about-cert-cf: #c6923a;
+  --about-cert-cs: #a0673c;
+  max-width: 760px;
+  margin: 0 auto 2.5rem;
+  padding: 0 0.5rem 1rem;
+  color: var(--about-ink);
+}
+
+.about-hero {
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  padding: 2.4rem 2rem 2.1rem;
+  border-radius: 18px;
+  border: 1px solid var(--about-line);
+  background:
+    radial-gradient(ellipse 75% 65% at 100% 0%, rgba(201, 150, 80, 0.22), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 0% 100%, rgba(180, 130, 70, 0.12), transparent 50%),
+    linear-gradient(165deg, var(--about-cream) 0%, #f3ebe0 100%);
+  box-shadow: 0 10px 36px rgba(90, 60, 30, 0.08);
+}
+
+.about-kicker {
+  margin: 0 0 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--about-warm);
+}
+
+.about-name {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--about-ink);
+}
+
+.about-name-alias {
+  margin-left: 0.35rem;
+  font-size: 0.55em;
+  font-weight: 600;
+  color: var(--about-muted);
+}
+
+.about-role {
+  margin: 0.55rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--about-warm);
+}
+
+.about-lead {
+  margin: 1rem 0 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--about-muted);
+}
+
+.about-motto {
+  margin-top: 1.35rem;
+  padding: 0.85rem 1rem 0.85rem 1.1rem;
+  border-left: 3px solid var(--about-warm);
+  border-radius: 0 12px 12px 0;
+  background: rgba(181, 122, 58, 0.08);
+}
+
+.about-motto-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--about-warm);
+  margin-bottom: 0.25rem;
+}
+
+.about-motto-text {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  font-weight: 500;
+  color: var(--about-ink);
+}
+
+.about-section {
+  margin-top: 2.25rem;
+}
+
+.about-section-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--about-ink);
+  line-height: 1.3;
+}
+
+.about-section-title::after {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 3px;
+  margin-top: 0.55rem;
+  border-radius: 2px;
+  background: var(--about-warm);
+}
+
+.about-section-desc {
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--about-muted);
+}
+
+.about-hobby-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .about-hobby-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.about-hobby-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.15rem 1.05rem;
+  border-radius: 14px;
+  border: 1px solid var(--about-line);
+  background: var(--about-cream);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.about-hobby-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(90, 60, 30, 0.1);
+}
+
+.about-hobby-cat {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.about-hobby-detail {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--about-ink);
+}
+
+.about-hobby-card--ride {
+  border-top: 3px solid var(--about-hobby-ride);
+  background: linear-gradient(180deg, rgba(168, 107, 50, 0.12) 0%, var(--about-cream) 55%);
+}
+.about-hobby-card--ride .about-hobby-cat {
+  color: var(--about-hobby-ride);
+}
+
+.about-hobby-card--sport {
+  border-top: 3px solid var(--about-hobby-sport);
+  background: linear-gradient(180deg, rgba(154, 85, 56, 0.12) 0%, var(--about-cream) 55%);
+}
+.about-hobby-card--sport .about-hobby-cat {
+  color: var(--about-hobby-sport);
+}
+
+.about-hobby-card--outdoor {
+  border-top: 3px solid var(--about-hobby-outdoor);
+  background: linear-gradient(180deg, rgba(125, 107, 62, 0.12) 0%, var(--about-cream) 55%);
+}
+.about-hobby-card--outdoor .about-hobby-cat {
+  color: var(--about-hobby-outdoor);
+}
+
+.about-hobby-card--gear {
+  border-top: 3px solid var(--about-hobby-gear);
+  background: linear-gradient(180deg, rgba(138, 114, 96, 0.14) 0%, var(--about-cream) 55%);
+}
+.about-hobby-card--gear .about-hobby-cat {
+  color: var(--about-hobby-gear);
+}
+
+.about-cert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.about-cert {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.05rem 1.2rem;
+  border-radius: 14px;
+  border: 1px solid var(--about-line);
+  background: var(--about-cream);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.about-cert:hover {
+  transform: translateY(-3px);
+}
+
+.about-cert-badge {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.about-cert-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.about-cert-game {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--about-muted);
+}
+
+.about-cert-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--about-ink);
+  line-height: 1.35;
+}
+
+.about-cert-tag {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 0.65rem;
+  border-radius: 8px;
+}
+
+.about-cert--cf {
+  background: linear-gradient(105deg, rgba(198, 146, 58, 0.16) 0%, var(--about-cream) 48%);
+}
+.about-cert--cf .about-cert-badge {
+  background: linear-gradient(145deg, #dbb15a, var(--about-cert-cf));
+}
+.about-cert--cf .about-cert-tag {
+  color: #a0782e;
+  background: rgba(198, 146, 58, 0.18);
+}
+
+.about-cert--cs {
+  background: linear-gradient(105deg, rgba(160, 103, 60, 0.14) 0%, var(--about-cream) 48%);
+}
+.about-cert--cs .about-cert-badge {
+  background: linear-gradient(145deg, #c48955, var(--about-cert-cs));
+}
+.about-cert--cs .about-cert-tag {
+  color: #8a5633;
+  background: rgba(160, 103, 60, 0.16);
+}
+
+.about-contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.about-contact-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 1rem 1.15rem;
+  border-radius: 14px;
+  border: 1px solid var(--about-line);
+  background: linear-gradient(180deg, rgba(255, 250, 242, 0.9) 0%, var(--about-cream) 100%);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.about-contact-list li:hover {
+  border-color: rgba(181, 122, 58, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(90, 60, 30, 0.08);
+}
+
+.about-contact-label {
+  min-width: 5.5rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--about-muted);
+}
+
+.about-contact-link {
+  color: var(--about-warm) !important;
+  text-decoration: none;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.about-contact-link:hover {
+  text-decoration: underline;
+}
+
+.dark .about-page {
+  color: var(--vp-c-text-1);
+}
+
+.dark .about-hero {
+  border-color: rgba(201, 150, 80, 0.2);
+  background:
+    radial-gradient(ellipse 75% 65% at 100% 0%, rgba(201, 150, 80, 0.14), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 0% 100%, rgba(160, 110, 60, 0.08), transparent 50%),
+    linear-gradient(165deg, #2a2622 0%, #322c26 100%);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.4);
+}
+
+.dark .about-name,
+.dark .about-motto-text,
+.dark .about-section-title,
+.dark .about-hobby-detail,
+.dark .about-cert-title {
+  color: var(--vp-c-text-1);
+}
+
+.dark .about-lead,
+.dark .about-section-desc,
+.dark .about-cert-game,
+.dark .about-contact-label {
+  color: var(--vp-c-text-2);
+}
+
+.dark .about-kicker,
+.dark .about-role,
+.dark .about-motto-label,
+.dark .about-contact-link {
+  color: #d4a56a !important;
+}
+
+.dark .about-motto {
+  background: rgba(255, 220, 160, 0.06);
+  border-left-color: #c6923a;
+}
+
+.dark .about-hobby-card,
+.dark .about-cert,
+.dark .about-contact-list li {
+  background: #2d2925;
+  border-color: rgba(201, 150, 80, 0.16);
+}
+
+@media (max-width: 480px) {
+  .about-hero {
+    padding: 1.75rem 1.25rem 1.6rem;
+  }
+  .about-cert {
+    flex-wrap: wrap;
+  }
+  .about-cert-tag {
+    margin-left: auto;
+  }
+}

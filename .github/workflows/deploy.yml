@@ -8,31 +8,33 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
-      - name: Setup Node.js 16.13.0
-        uses: actions/setup-node@master
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: "16.14.2"
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
+          node-version: "22.12.0"
+          cache: npm
 
       - name: Build
-        run: npm install && npm run build
+        run: npm ci && npm run build
 
+      # ACTIONS_DEPLOY_KEY 历史上用作 v3 的 ACCESS_TOKEN（GitHub PAT）。
+      # 若 Secret 实际是 SSH Deploy Key 私钥，请把下面的 token 改成：
+      #   ssh-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+      # 并删除 token 行。未配置 Secret 时回退到 GITHUB_TOKEN。
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          ACCESS_TOKEN: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          BRANCH: gh-pages
-          FOLDER: docs/.vuepress/dist
+          token: ${{ secrets.ACTIONS_DEPLOY_KEY || github.token }}
+          branch: gh-pages
+          folder: docs/.vitepress/dist
 
       # 部署完成后将站点链接提交给百度站长（token 放在仓库 Secrets，勿写入代码）
       - name: Submit URLs to Baidu

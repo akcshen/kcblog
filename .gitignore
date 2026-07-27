@@ -1,5 +1,4 @@
 # npm
-package-lock.json
 node_modules
 
 # vscode
@@ -7,9 +6,11 @@ node_modules
 
 # vuepress 
 docs/.vuepress/dist
+docs/.vitepress/dist
+docs/.vitepress/cache
 
 # 百度链接推送
 urls.txt
 
 # 屏蔽坚果云同步目录
-docs/04.更多/12.坚果云同步
+docs/更多/坚果云同步

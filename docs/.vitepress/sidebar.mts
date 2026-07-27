@@ -48,58 +48,10 @@ function mapSidebarValue(
   };
 }
 
-/** 快应用 -> 用于匹配侧栏分组标题（目录已无序号前缀） */
-function segmentTitle(seg: string) {
-  return seg.replace(/^\d+\./, "");
-}
-
-/**
- * Teek 侧栏通常只生成顶级目录 key（如 /多端/），嵌套栏目在 items 里。
- * 按文件相对路径下钻，尽量只保留当前小栏目。
- */
-function narrowToLeaf(
-  mapped: DefaultTheme.SidebarItem[] | DefaultTheme.SidebarItem,
-  fileDir: string,
-  dirPrefix: string
-): DefaultTheme.SidebarItem[] | DefaultTheme.SidebarItem {
-  const remaining =
-    fileDir === dirPrefix ? "" : fileDir.slice(dirPrefix.length + 1);
-  if (!remaining) return mapped;
-
-  const segments = remaining.split("/").filter(Boolean);
-  let nodes: DefaultTheme.SidebarItem[] = Array.isArray(mapped)
-    ? mapped
-    : mapped.items || [mapped];
-
-  // Teek 常包一层 text:"" 的根节点，先展开
-  if (
-    nodes.length === 1 &&
-    (!nodes[0].text || nodes[0].text === "") &&
-    nodes[0].items?.length
-  ) {
-    nodes = nodes[0].items;
-  }
-
-  let leaf: DefaultTheme.SidebarItem | undefined;
-  for (const seg of segments) {
-    const title = segmentTitle(seg);
-    const hit = nodes.find(
-      (item) => item.text === title || item.text === seg
-    );
-    if (!hit) break;
-    leaf = hit;
-    nodes = hit.items || [];
-  }
-
-  if (leaf?.items?.length) {
-    return [{ text: leaf.text, collapsed: false, items: leaf.items }];
-  }
-  return mapped;
-}
-
 /**
  * Teek/VitePress 在 permalink 都是 /pages/xxx 时，rewrites 侧栏会互相覆盖成最后一组。
- * 按文件路径生成侧栏后，把每个永久链接挂到对应目录（优先最深目录，并尽量收窄到小栏目）。
+ * 按文件路径生成侧栏后，把每个永久链接挂到对应「一级栏目」整棵树
+ *（例如读 AI 文章时侧栏展示「更多」下全部子栏目，而不只当前小分类）。
  */
 export function fixPermalinkSidebar(
   data: DefaultTheme.SidebarMulti | DefaultTheme.SidebarItem[]
@@ -109,10 +61,7 @@ export function fixPermalinkSidebar(
   const result: DefaultTheme.SidebarMulti = {};
   const permalinkBest = new Map<
     string,
-    {
-      depth: number;
-      mapped: DefaultTheme.SidebarItem[] | DefaultTheme.SidebarItem;
-    }
+    DefaultTheme.SidebarItem[] | DefaultTheme.SidebarItem
   >();
 
   for (const [key, value] of Object.entries(data)) {
@@ -121,6 +70,8 @@ export function fixPermalinkSidebar(
 
     const dirPrefix = key.replace(/^\//, "").replace(/\/$/, "");
     const depth = dirPrefix ? dirPrefix.split("/").length : 0;
+    // 只挂一级栏目（如 /更多/），深度越小展示越多兄弟分类
+    if (depth !== 1) continue;
 
     for (const [file, permalink] of Object.entries(fileToPermalink)) {
       const fileDir = file.includes("/")
@@ -128,18 +79,12 @@ export function fixPermalinkSidebar(
         : "";
       const matched =
         fileDir === dirPrefix || fileDir.startsWith(dirPrefix + "/");
-      if (!matched) continue;
-
-      const narrowed = narrowToLeaf(mapped, fileDir, dirPrefix);
-      const prev = permalinkBest.get(permalink);
-      // 更深的目录 key 优先；同深度时以收窄后的为准
-      if (!prev || depth >= prev.depth) {
-        permalinkBest.set(permalink, { depth, mapped: narrowed });
-      }
+      if (!matched || permalinkBest.has(permalink)) continue;
+      permalinkBest.set(permalink, mapped);
     }
   }
 
-  for (const [permalink, { mapped }] of permalinkBest) {
+  for (const [permalink, mapped] of permalinkBest) {
     result[permalink] = mapped;
     if (!permalink.endsWith("/")) result[permalink + "/"] = mapped;
   }

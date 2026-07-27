@@ -56,7 +56,7 @@ npm run deploy
 
 ### 评论
 
-当前评论区为 Valine（LeanCloud，自定义插槽）。若要换成 Teek 原生方案，在 `docs/.vitepress/config.mts` 中将 `comment.provider` 改为 `waline` / `giscus` / `twikoo`，并填写对应 `options`（见 [Teek 评论文档](https://vp.teek.top/guide/comment)）；同时可去掉主题里的 `ValineComment` 插槽。
+当前评论区为 Waline（服务端 `https://waline.kcshen.cn`，Teek 原生接入）。管理后台：`https://waline.kcshen.cn/ui`。旧 Valine/LeanCloud 数据需自行导出后用 [Waline 迁移工具](https://waline.js.org/migration/tool.html) 导入 Neon。
 
 ### 百度链接提交（CI 自动）
 

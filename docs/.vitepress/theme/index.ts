@@ -7,15 +7,15 @@ import "vitepress-theme-teek/theme-chalk/tk-nav.css";
 import "vitepress-theme-teek/theme-chalk/tk-aside.css";
 import "vitepress-theme-teek/theme-chalk/tk-doc-h1-gradient.css";
 import "vitepress-theme-teek/theme-chalk/tk-doc-fade-in.css";
+import "vitepress-theme-teek/theme-chalk/tk-comment-waline.css";
 import "./style.css";
-import ValineComment from "./components/ValineComment.vue";
-import HomeExtraNotes from "./components/HomeExtraNotes.vue";
+import HomePersona from "./components/HomePersona.vue";
 
 export default {
   extends: Teek,
   Layout: () =>
     h(Teek.Layout, null, {
-      "teek-comment": () => h(ValineComment),
-      "teek-home-post-after": () => h(HomeExtraNotes),
+      // 文章列表上方：人格化「此刻」卡片
+      "teek-home-post-before": () => h(HomePersona),
     }),
 };

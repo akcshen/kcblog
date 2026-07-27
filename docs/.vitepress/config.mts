@@ -1,5 +1,10 @@
 import { defineConfig } from "vitepress";
 import { defineTeekConfig } from "vitepress-theme-teek/config";
+// 勿从主包 import：会连带加载 vitepress/theme，Node 解析 without-fonts 失败
+import {
+  email,
+  github,
+} from "vitepress-theme-teek/es/components/common/icon/src/social-icons.mjs";
 import { fixPermalinkSidebar, getPermalinkRewrites } from "./sidebar.mts";
 
 const permalinkRewrites = getPermalinkRewrites();
@@ -14,7 +19,7 @@ const teekConfig = defineTeekConfig({
   },
   blogger: {
     name: "kcqingfeng",
-    slogan: "前端小学生",
+    // slogan: "工作开心不加班",
     avatar:
       "https://cdn.jsdelivr.net/gh/akcshen/chartBed@master/assets/img/202303141847699.jpeg",
     shape: "circle-rotate",
@@ -32,12 +37,7 @@ const teekConfig = defineTeekConfig({
     imgWaves: false,
   },
   bodyBgImg: {
-    imgSrc: [
-      "https://img.kcshen.cn/assets/img/2026/0411-203736-20200507175828.jpeg",
-      "https://img.kcshen.cn/assets/img/2026/0411-203752-20200507175845.jpeg",
-      "https://img.kcshen.cn/assets/img/2026/0411-203624-20200507175846.jpeg",
-    ],
-    imgInterval: 15000,
+    imgSrc: "https://img.kcshen.cn/assets/img/21bda4d32.jpeg",
     mask: false,
     bannerStyle: "part",
   },
@@ -66,15 +66,16 @@ const teekConfig = defineTeekConfig({
   docAnalysis: {
     createTime: "2021-10-19",
   },
+  // icon 需为 SVG 字符串 / Iconify（如 mdi:github）/ icon-xxx；纯 "github" 无法渲染
   social: [
     {
       name: "GitHub",
-      icon: "github",
+      icon: github,
       link: "https://github.com/akcshen",
     },
     {
       name: "Email",
-      icon: "email",
+      icon: email,
       link: "mailto:kcqingfeng@gmail.com",
     },
   ],
@@ -89,9 +90,22 @@ const teekConfig = defineTeekConfig({
     },
   },
   comment: {
-    // 当前用自定义 Valine（theme/components/ValineComment.vue）。
-    // 换成 Teek 原生时改为 waline / giscus / twikoo，并配置 options，同时去掉主题插槽。
-    provider: "render",
+    provider: "waline",
+    options: {
+      serverURL: "https://waline.kcshen.cn",
+      // Teek 通过动态 import(jsLink) 初始化；国内用 jsDelivr 更稳
+      jsLink: "https://cdn.jsdelivr.net/npm/@waline/client@v3/dist/waline.js",
+      cssLink: "https://cdn.jsdelivr.net/npm/@waline/client@v3/dist/waline.css",
+      dark: "html.dark",
+      lang: "zh-CN",
+      pageSize: 10,
+      meta: ["nick", "mail"],
+      requiredMeta: ["nick", "mail"],
+      login: "enable",
+      locale: {
+        placeholder: "欢迎留言讨论~",
+      },
+    },
   },
   siteAnalytics: [
     {

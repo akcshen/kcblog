@@ -172,8 +172,13 @@
   background-color: var(--vp-c-brand-1) !important;
 }
 
+/* 无分页内容时隐藏空壳，避免白底 padding 留一条白条 */
+.tk-home-main .tk-post__pagination:not(:has(.tk-pagination, .el-pagination, .tk-pager)) {
+  display: none !important;
+}
+
 /* 分类 / 标签页分页：横向排列，与半透明风格协调 */
-.tk-home-main .tk-post__pagination {
+.tk-home-main .tk-post__pagination:has(.tk-pagination, .el-pagination, .tk-pager) {
   margin-top: 1.25rem;
   padding: 0.75rem 1rem;
   border-radius: 8px;
@@ -227,7 +232,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.75) !important;
 }
 
-.dark .tk-home-main .tk-post__pagination {
+.dark .tk-home-main .tk-post__pagination:has(.tk-pagination, .el-pagination, .tk-pager) {
   background: rgba(45, 45, 45, 0.9);
   border-color: rgba(255, 255, 255, 0.06);
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);

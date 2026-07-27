@@ -9,6 +9,10 @@ import { fixPermalinkSidebar, getPermalinkRewrites } from "./sidebar.mts";
 
 const permalinkRewrites = getPermalinkRewrites();
 
+/** 看剧站 / NAS 文件图标，风格贴近 Teek 自带 social SVG */
+const tv = `<svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="200" height="200"><path d="M0 0m184.32 0l655.36 0q184.32 0 184.32 184.32l0 655.36q0 184.32-184.32 184.32l-655.36 0q-184.32 0-184.32-184.32l0-655.36q0-184.32 184.32-184.32Z" fill="#11a8cd"/><path d="M256 288h512a48 48 0 0 1 48 48v320a48 48 0 0 1-48 48H256a48 48 0 0 1-48-48V336a48 48 0 0 1 48-48z" fill="#FFFFFF"/><path d="M288 336h448v256H288z" fill="#0d7a96"/><path d="M384 752h256a24 24 0 0 1 0 48H384a24 24 0 0 1 0-48z" fill="#FFFFFF"/></svg>`;
+const nas = `<svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="200" height="200"><path d="M0 0m184.32 0l655.36 0q184.32 0 184.32 184.32l0 655.36q0 184.32-184.32 184.32l-655.36 0q-184.32 0-184.32-184.32l0-655.36q0-184.32 184.32-184.32Z" fill="#f5a623"/><path d="M240 400h220l64 64h260a48 48 0 0 1 48 48v208a48 48 0 0 1-48 48H240a48 48 0 0 1-48-48V448a48 48 0 0 1 48-48z" fill="#FFFFFF"/><path d="M240 320h200l48 48H240a32 32 0 0 1 0-48z" fill="#FFFFFF" opacity=".85"/></svg>`;
+
 const teekConfig = defineTeekConfig({
   teekHome: true,
   vpHome: false,
@@ -77,6 +81,16 @@ const teekConfig = defineTeekConfig({
       name: "Email",
       icon: email,
       link: "mailto:kcqingfeng@gmail.com",
+    },
+    {
+      name: "看剧",
+      icon: tv,
+      link: "https://tv.kcshen.cn",
+    },
+    {
+      name: "NAS 文件",
+      icon: nas,
+      link: "https://file.kcshen.cn/",
     },
   ],
   footerInfo: {

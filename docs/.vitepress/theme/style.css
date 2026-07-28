@@ -138,19 +138,20 @@
 .tk-home-main .tk-post.is-list .tk-article-title,
 .tk-home-main .tk-post .tk-post-item {
   background: rgba(255, 255, 255, 0.9) !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  /* 首页滚动场景优先流畅度，避免大量毛玻璃触发高成本重绘 */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border-radius: 8px !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08) !important;
   border: 1px solid rgba(255, 255, 255, 0.35) !important;
-  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  transition: box-shadow 0.2s ease !important;
 }
 
 .tk-home-main .tk-page-card:hover,
 .tk-home-main .tk-post.is-list .tk-article-title:hover,
 .tk-home-main .tk-post .tk-post-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18) !important;
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
 }
 
 /* 只改文章列表 ul（直接子元素），不要改分页里的 .tk-pager */
@@ -251,17 +252,36 @@
   --about-hobby-gear: #8a7260;
   --about-cert-cf: #c6923a;
   --about-cert-cs: #a0673c;
-  max-width: 760px;
+  max-width: none;
+  width: min(1180px, calc(100vw - 72px));
   margin: 0 auto 2.5rem;
   padding: 0 0.5rem 1rem;
   color: var(--about-ink);
+}
+
+/* about 页单独放宽容器（兼容 VitePress / Teek 不同 DOM 结构） */
+.about-wide {
+  --vp-layout-max-width: 1680px;
+}
+
+.about-wide .VPDoc .container,
+.about-wide .VPDoc .content,
+.about-wide .VPDoc .content-container,
+.about-wide .VPDoc .vp-doc,
+.about-wide .vp-doc,
+.about-wide .content-container,
+.about-wide .content-body {
+  max-width: 1180px !important;
+  width: min(1180px, 100%) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .about-hero {
   position: relative;
   overflow: hidden;
   text-align: left;
-  padding: 2.4rem 2rem 2.1rem;
+  padding: 2.4rem 2rem 2.6rem;
   border-radius: 18px;
   border: 1px solid var(--about-line);
   background:
@@ -336,16 +356,35 @@
 }
 
 .about-section {
-  margin-top: 2.25rem;
+  margin-top: 2.9rem;
 }
 
 .about-section-title {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.9rem;
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--about-ink);
   line-height: 1.3;
+}
+
+/* about 页纵向节奏强制覆盖：避免被主题默认标题/段落间距覆盖 */
+.about-wide .about-hero {
+  margin-bottom: 2rem !important;
+  padding-bottom: 2.8rem !important;
+}
+
+.about-wide .about-section {
+  margin-top: 3.2rem !important;
+}
+
+.about-wide .about-section-title {
+  margin-bottom: 1.2rem !important;
+  padding-bottom: 0.15rem !important;
+}
+
+.about-wide .about-hobby-grid {
+  margin-bottom: 1rem !important;
 }
 
 .about-section-title::after {
@@ -359,7 +398,7 @@
 }
 
 .about-section-desc {
-  margin: 0 0 1rem;
+  margin: 0 0 1.25rem;
   font-size: 0.92rem;
   line-height: 1.6;
   color: var(--about-muted);
@@ -368,7 +407,8 @@
 .about-hobby-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.85rem;
+  gap: 1rem;
+  margin-bottom: 0.4rem;
 }
 
 @media (max-width: 640px) {

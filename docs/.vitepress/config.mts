@@ -5,9 +5,6 @@ import {
   email,
   github,
 } from "vitepress-theme-teek/es/components/common/icon/src/social-icons.mjs";
-import { fixPermalinkSidebar, getPermalinkRewrites } from "./sidebar.mts";
-
-const permalinkRewrites = getPermalinkRewrites();
 
 /** 看剧站 / NAS 文件图标，风格贴近 Teek 自带 social SVG */
 const tv = `<svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="200" height="200"><path d="M0 0m184.32 0l655.36 0q184.32 0 184.32 184.32l0 655.36q0 184.32-184.32 184.32l-655.36 0q-184.32 0-184.32-184.32l0-655.36q0-184.32 184.32-184.32Z" fill="#11a8cd"/><path d="M256 288h512a48 48 0 0 1 48 48v320a48 48 0 0 1-48 48H256a48 48 0 0 1-48-48V336a48 48 0 0 1 48-48z" fill="#FFFFFF"/><path d="M288 336h448v256H288z" fill="#0d7a96"/><path d="M384 752h256a24 24 0 0 1 0 48H384a24 24 0 0 1 0-48z" fill="#FFFFFF"/></svg>`;
@@ -130,18 +127,17 @@ const teekConfig = defineTeekConfig({
     },
   ],
   vitePlugins: {
-    permalink: true,
+    permalink: false,
     sidebar: true,
     sidebarOption: {
-      // 按目录生成侧栏，再映射到各篇文章的 permalink，避免 /pages/* 互相覆盖成「随笔」
+      // 按目录生成侧栏（关闭 permalink 重写后，直接以文件路径路由为准）
       resolveRule: "filePath",
       collapsed: false,
       titleFormMd: true,
       ignoreList: ["archives", "categories", "tags"],
-      sidebarResolved: fixPermalinkSidebar,
     },
     docAnalysis: true,
-    autoFrontmatter: false,
+    autoFrontmatter: true,
   },
 });
 
@@ -154,7 +150,6 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
   ignoreDeadLinks: true,
-  rewrites: (page) => permalinkRewrites[page],
   head: [
     ["link", { rel: "icon", href: "/favicon.ico" }],
     [
@@ -237,10 +232,10 @@ export default defineConfig({
       {
         text: "收藏",
         items: [
-          { text: "好用的组件库", link: "/Favorites/" },
-          { text: "AI 相关开源", link: "/pages/9f3e2a/" },
-          { text: "Node 版本管理", link: "/pages/22ed96/" },
-          { text: "面试收藏", link: "/pages/d497b2/" },
+          { text: "好用的组件库", link: "/收藏/提前下班小妙招/01.好用的npm库" },
+          { text: "AI 相关开源", link: "/收藏/提前下班小妙招/02.AI相关开源" },
+          { text: "Node 版本管理", link: "/收藏/node版本的切换/01.Node版本管理-fnm与nvm" },
+          { text: "面试收藏", link: "/收藏/面试/01.面试问答" },
         ],
       },
       { text: "关于", link: "/about" },

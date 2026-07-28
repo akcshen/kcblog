@@ -1,9 +1,12 @@
 ---
 title: 关于
-date: 2019-12-25 14:27:01
-permalink: /about
+date: 2019-12-26 14:27:01
 sidebar: false
 article: false
+pageClass: about-wide
+permalink: /pages/bdd7b7
+categories:
+  - 
 ---
 
 <div class="about-page">
@@ -88,17 +91,17 @@ article: false
 </div>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from "vue";
 
-const qqUrl = ref('tencent://message/?uin=965506744&Site=&Menu=yes')
+const qqUrl = ref("tencent://message/?uin=965506744&Site=&Menu=yes");
 
 onMounted(() => {
   const flag = navigator.userAgent.match(
     /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
-  )
+  );
   if (flag) {
     qqUrl.value =
-      'mqqwpa://im/chat?chat_type=wpa&uin=965506744&version=1&src_type=web&web_src=oicqzone.com'
+      "mqqwpa://im/chat?chat_type=wpa&uin=965506744&version=1&src_type=web&web_src=oicqzone.com";
   }
-})
+});
 </script>

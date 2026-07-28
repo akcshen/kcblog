@@ -11,6 +11,7 @@ docs/.vitepress/cache
 
 # 百度链接推送
 urls.txt
+.baidu-push.env
 
 # 屏蔽坚果云同步目录
 docs/04.更多/12.坚果云同步

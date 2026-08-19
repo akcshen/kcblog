@@ -3,22 +3,107 @@
   --vp-c-brand-2: #0b91b1;
   --vp-c-brand-3: #0d7f9a;
   --vp-c-brand-soft: rgba(17, 168, 205, 0.14);
+  --home-chat-bg: #ffffff;
+  --home-chat-pattern: url("/img/home-doodle.svg");
+  --home-chat-line: color-mix(in srgb, var(--vp-c-text-1) 10%, transparent);
+  --vp-nav-bg-color: transparent;
+  --vp-sidebar-bg-color: transparent;
 }
 
-/* ---------- Nav（贴近旧站毛玻璃顶栏） ---------- */
+html.dark {
+  --home-chat-bg: #141414;
+}
+
+/* ---------- 全站：白底 + 淡线稿花纹 ---------- */
+html {
+  background-color: var(--home-chat-bg) !important;
+  background-image: var(--home-chat-pattern) !important;
+  background-repeat: repeat !important;
+  background-size: 540px 540px !important;
+  background-attachment: scroll !important;
+}
+
+body,
+#app,
+.Layout,
+.VPContent,
+.VPDoc,
+.VPDoc .container,
+.VPDoc .content,
+.VPDoc .content-container,
+.tk-home-main,
+.tk-article-page,
+.tk-doc,
+.VPSidebar,
+.aside-container,
+.aside-content {
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* ---------- Nav：固定顶栏，一层毛玻璃，正文从后面透出 ---------- */
+.VPNav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: var(--vp-z-index-nav, 20);
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.VPContent {
+  padding-top: var(--vp-nav-height) !important;
+}
+
+.VPLocalNav {
+  top: var(--vp-nav-height) !important;
+}
+
+.VPNavBar .wrapper,
+.VPNavBar .container,
+.VPNavBar .title,
+.VPNavBar .content,
+.VPNavBar .content-body,
+.VPNavBar.has-sidebar .content-body,
+.VPLocalNav .container {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.VPNavBar,
+.VPLocalNav {
+  background-color: color-mix(in srgb, var(--home-chat-bg) 42%, transparent) !important;
+  background-image: none !important;
+  backdrop-filter: blur(18px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.2) !important;
+}
+
 .VPNavBar {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--vp-c-divider) !important;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
-  transition: background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  z-index: 20;
+  border-bottom: 1px solid var(--home-chat-line) !important;
+  box-shadow: 0 6px 16px rgba(15, 23, 32, 0.07);
+}
+
+.dark .VPNavBar {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.32);
+}
+
+.VPNavBar .divider,
+.VPNavBar .divider-line,
+.VPNavBar .curtain {
+  display: none !important;
 }
 
 .VPNavBar .VPNavBarTitle .logo,
 .VPNavBar .VPImage.logo {
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0 0 2px rgba(17, 168, 205, 0.18);
+  box-shadow: none;
 }
 
 .VPNavBar .title {
@@ -29,15 +114,16 @@
 .VPNavBarMenuLink,
 .VPNavBarMenuGroup .button {
   margin: 0 0.1rem;
-  border-radius: 6px;
+  border-radius: 0;
   font-weight: 500;
-  transition: color 0.2s ease, background 0.2s ease;
+  background: transparent !important;
+  transition: color 0.15s ease;
 }
 
 .VPNavBarMenuLink:hover,
 .VPNavBarMenuGroup .button:hover {
   color: var(--vp-c-brand-1) !important;
-  background: var(--vp-c-brand-soft);
+  background: transparent !important;
 }
 
 .VPNavBarMenuLink.active {
@@ -51,28 +137,27 @@
 
 .VPNavBarSearch .DocSearch-Button,
 .VPLocalSearchBox .prompt {
-  border-radius: 999px !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  border: 1px solid var(--home-chat-line) !important;
 }
 
-.dark .VPNavBar {
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+.VPSidebar {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-right: 1px solid var(--home-chat-line);
 }
 
-.dark .VPNavBar .VPNavBarTitle .logo,
-.dark .VPNavBar .VPImage.logo {
-  box-shadow: 0 0 0 2px rgba(17, 168, 205, 0.28);
-}
-
-/* ---------- 卡片 / 内容区质感 ---------- */
+/* ---------- 取消全站浮卡 / 抬起 ---------- */
 .tk-post-item,
 .tk-article-card,
 .VPFeature,
 .share-card,
-.tk-card {
-  border-radius: 12px !important;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 85%, transparent);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+.tk-card,
+.VPDoc .content-container,
+.VPContent .container {
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
 .tk-post-item:hover,
@@ -80,114 +165,442 @@
 .VPFeature:hover,
 .share-card:hover,
 .tk-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-  border-color: color-mix(in srgb, var(--vp-c-brand-1) 35%, var(--vp-c-divider));
-}
-
-.VPDoc .content-container,
-.VPContent .container {
-  border-radius: 12px;
-}
-
-.VPSidebar {
-  backdrop-filter: blur(8px);
-}
-
-.dark .tk-post-item,
-.dark .tk-article-card,
-.dark .VPFeature,
-.dark .share-card,
-.dark .tk-card {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
-}
-
-/* ---------- 首页：贴近旧站 vdoing ---------- */
-.tk-home-main {
-  --tk-home-banner-part-min-height: 300px;
-}
-
-.tk-banner .tk-banner__content {
-  min-height: var(--tk-home-banner-part-min-height) !important;
-  height: auto !important;
-  padding-bottom: 1.5rem !important;
-}
-
-.tk-banner-content__title {
-  font-weight: 700 !important;
-  letter-spacing: 0.02em;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.35);
-}
-
-.tk-banner-content__desc {
-  opacity: 0.92;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
-}
-
-.dark .tk-banner {
-  --tk-banner-text-color: #e8f4f8 !important;
-}
-
-.dark .tk-banner-content__title,
-.dark .tk-banner-content__desc {
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
-}
-
-/* 半透明卡片叠在背景图上（仅文章列表，勿波及分页 ul/li） */
-.tk-home-main .tk-page-card,
-.tk-home-main .tk-post.is-list .tk-article-title,
-.tk-home-main .tk-post .tk-post-item {
-  background: rgba(255, 255, 255, 0.9) !important;
-  /* 首页滚动场景优先流畅度，避免大量毛玻璃触发高成本重绘 */
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-radius: 8px !important;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.35) !important;
-  transition: box-shadow 0.2s ease !important;
-}
-
-.tk-home-main .tk-page-card:hover,
-.tk-home-main .tk-post.is-list .tk-article-title:hover,
-.tk-home-main .tk-post .tk-post-item:hover {
   transform: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+  box-shadow: none !important;
 }
 
-/* 只改文章列表 ul（直接子元素），不要改分页里的 .tk-pager */
+.home-editorial .tk-home-main__content,
+.tk-home-main:has(.home-persona) .tk-home-main__content {
+  display: block;
+  max-width: 52rem;
+  margin: 1.25rem auto 3.5rem;
+  padding: 0 1.25rem;
+}
+
+.home-editorial .tk-home-main__content__post,
+.tk-home-main:has(.home-persona) .tk-home-main__content__post {
+  width: 100%;
+  min-width: 0;
+  max-width: 52rem;
+  float: none;
+}
+
+.home-editorial .tk-home-main__content__info,
+.tk-home-main:has(.home-persona) .tk-home-main__content__info {
+  display: none !important;
+}
+
+/* 分类 / 标签页：左右分栏独立滚动，高度锁在视口内 */
+html:has(.filter-editorial),
+html:has(.tk-category.is-page),
+html:has(.tk-tag.is-page) {
+  height: 100dvh;
+  overflow: hidden;
+}
+
+html:has(.filter-editorial) body,
+html:has(.filter-editorial) #app,
+html:has(.filter-editorial) .Layout,
+html:has(.tk-category.is-page) body,
+html:has(.tk-category.is-page) #app,
+html:has(.tk-category.is-page) .Layout,
+html:has(.tk-tag.is-page) body,
+html:has(.tk-tag.is-page) #app,
+html:has(.tk-tag.is-page) .Layout {
+  box-sizing: border-box;
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
+html:has(.filter-editorial) .tk-footer-info,
+html:has(.tk-category.is-page) .tk-footer-info,
+html:has(.tk-tag.is-page) .tk-footer-info {
+  display: none !important;
+}
+
+.filter-editorial .VPContent,
+html:has(.tk-category.is-page) .VPContent,
+html:has(.tk-tag.is-page) .VPContent,
+.filter-editorial .tk-home-main,
+.tk-home-main:has(.tk-category.is-page),
+.tk-home-main:has(.tk-tag.is-page) {
+  box-sizing: border-box;
+  flex-shrink: 1 !important;
+  min-height: 0 !important;
+  height: calc(100dvh - var(--vp-nav-height)) !important;
+  max-height: calc(100dvh - var(--vp-nav-height)) !important;
+  overflow: hidden !important;
+  margin: var(--vp-nav-height) 0 0 !important;
+  padding-top: 0 !important;
+}
+
+.filter-editorial .tk-home-main,
+.tk-home-main:has(.tk-category.is-page),
+.tk-home-main:has(.tk-tag.is-page) {
+  display: flex;
+  flex-direction: column;
+  margin: 0 !important;
+}
+
+.filter-editorial .tk-home-main__content,
+.tk-home-main:has(.tk-category.is-page) .tk-home-main__content,
+.tk-home-main:has(.tk-tag.is-page) .tk-home-main__content {
+  display: flex !important;
+  flex: 1 1 auto;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 2rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 0 !important;
+  height: 100% !important;
+  max-width: 74rem;
+  max-height: 100% !important;
+  margin: 0 auto !important;
+  padding: 0.75rem 1.25rem 0.9rem;
+  overflow: hidden;
+}
+
+.filter-editorial .tk-home-main__content__post,
+.tk-home-main:has(.tk-category.is-page) .tk-home-main__content__post,
+.tk-home-main:has(.tk-tag.is-page) .tk-home-main__content__post,
+.filter-editorial .tk-home-main__content__info,
+.tk-home-main:has(.tk-category.is-page) .tk-home-main__content__info,
+.tk-home-main:has(.tk-tag.is-page) .tk-home-main__content__info {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  box-sizing: border-box;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 0.35rem 2.75rem 0;
+  scrollbar-gutter: stable;
+}
+
+.filter-editorial .tk-home-main__content__post,
+.tk-home-main:has(.tk-category.is-page) .tk-home-main__content__post,
+.tk-home-main:has(.tk-tag.is-page) .tk-home-main__content__post {
+  flex: 1 1 36rem;
+  max-width: 52rem;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--vp-c-text-1) 28%, transparent) transparent;
+}
+
+.filter-editorial .tk-home-main__content__info,
+.tk-home-main:has(.tk-category.is-page) .tk-home-main__content__info,
+.tk-home-main:has(.tk-tag.is-page) .tk-home-main__content__info {
+  display: block !important;
+  flex: 0 0 19rem;
+  width: 19rem;
+  position: relative;
+  top: auto;
+  padding: 0 1.15rem 2.75rem 0;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--vp-c-brand-1) 55%, transparent)
+    color-mix(in srgb, var(--vp-c-brand-1) 10%, transparent);
+}
+
+.filter-editorial .tk-home-main__content__post::-webkit-scrollbar,
+.tk-home-main:has(.tk-category.is-page) .tk-home-main__content__post::-webkit-scrollbar,
+.tk-home-main:has(.tk-tag.is-page) .tk-home-main__content__post::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filter-editorial .tk-home-main__content__post::-webkit-scrollbar-track,
+.tk-home-main:has(.tk-category.is-page) .tk-home-main__content__post::-webkit-scrollbar-track,
+.tk-home-main:has(.tk-tag.is-page) .tk-home-main__content__post::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.filter-editorial .tk-home-main__content__post::-webkit-scrollbar-thumb,
+.tk-home-main:has(.tk-category.is-page) .tk-home-main__content__post::-webkit-scrollbar-thumb,
+.tk-home-main:has(.tk-tag.is-page) .tk-home-main__content__post::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--vp-c-text-1) 22%, transparent);
+  border-radius: 999px;
+}
+
+.filter-editorial .tk-home-main__content__info::-webkit-scrollbar,
+.tk-home-main:has(.tk-category.is-page) .tk-home-main__content__info::-webkit-scrollbar,
+.tk-home-main:has(.tk-tag.is-page) .tk-home-main__content__info::-webkit-scrollbar {
+  width: 7px;
+}
+
+.filter-editorial .tk-home-main__content__info::-webkit-scrollbar-track,
+.tk-home-main:has(.tk-category.is-page) .tk-home-main__content__info::-webkit-scrollbar-track,
+.tk-home-main:has(.tk-tag.is-page) .tk-home-main__content__info::-webkit-scrollbar-track {
+  margin: 10px 0 28px;
+  background: color-mix(in srgb, var(--vp-c-brand-1) 10%, transparent);
+  border-radius: 999px;
+}
+
+.filter-editorial .tk-home-main__content__info::-webkit-scrollbar-thumb,
+.tk-home-main:has(.tk-category.is-page) .tk-home-main__content__info::-webkit-scrollbar-thumb,
+.tk-home-main:has(.tk-tag.is-page) .tk-home-main__content__info::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--vp-c-brand-1) 75%, #fff),
+      var(--vp-c-brand-1)
+    ) padding-box;
+  background-clip: padding-box;
+  min-height: 48px;
+}
+
+.filter-editorial .tk-home-main__content__info::-webkit-scrollbar-thumb:hover,
+.tk-home-main:has(.tk-category.is-page) .tk-home-main__content__info::-webkit-scrollbar-thumb:hover,
+.tk-home-main:has(.tk-tag.is-page) .tk-home-main__content__info::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-brand-1) padding-box;
+  background-clip: padding-box;
+}
+
+.filter-editorial .tk-home-main__content__info .tk-home-card,
+.tk-home-main:has(.tk-category.is-page) .tk-home-card,
+.tk-home-main:has(.tk-tag.is-page) .tk-home-card,
+.filter-editorial .tk-page-card,
+.tk-home-main:has(.tk-category.is-page) .tk-page-card,
+.tk-home-main:has(.tk-tag.is-page) .tk-page-card {
+  width: 100% !important;
+  max-height: none;
+  min-height: 0;
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+  transform: none !important;
+}
+
+.filter-editorial .tk-category.is-page,
+.filter-editorial .tk-tag.is-page,
+.tk-home-main:has(.tk-category.is-page) .tk-category.is-page,
+.tk-home-main:has(.tk-tag.is-page) .tk-tag.is-page {
+  position: relative !important;
+  top: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.filter-editorial .tk-category__list,
+.filter-editorial .tk-tag__list,
+.tk-home-main:has(.tk-category.is-page) .tk-category__list,
+.tk-home-main:has(.tk-tag.is-page) .tk-tag__list {
+  overflow: visible;
+  max-height: none;
+  padding-right: 0;
+}
+
+.filter-editorial .tk-page-card:hover,
+.tk-home-main:has(.tk-category.is-page) .tk-page-card:hover,
+.tk-home-main:has(.tk-tag.is-page) .tk-page-card:hover {
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.filter-editorial .tk-page-card__header .title,
+.tk-home-main:has(.tk-category.is-page) .tk-page-card__header .title,
+.tk-home-main:has(.tk-tag.is-page) .tk-page-card__header .title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.filter-editorial .tk-category__list a,
+.tk-home-main:has(.tk-category.is-page) .tk-category__list a {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.55rem 0.35rem 0.55rem 0;
+  border-left: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--vp-c-text-1) 10%, transparent);
+  color: var(--vp-c-text-1);
+  background: transparent;
+}
+
+.filter-editorial .tk-category__list a:hover,
+.tk-home-main:has(.tk-category.is-page) .tk-category__list a:hover {
+  background: transparent;
+  color: var(--vp-c-brand-1);
+  border-color: color-mix(in srgb, var(--vp-c-text-1) 10%, transparent);
+}
+
+.filter-editorial .tk-category__list a.active,
+.tk-home-main:has(.tk-category.is-page) .tk-category__list a.active {
+  background: transparent;
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
+  padding-left: 0;
+  border-radius: 0;
+}
+
+.filter-editorial .tk-tag__list a,
+.tk-home-main:has(.tk-tag.is-page) .tk-tag__list a {
+  height: auto;
+  line-height: 1.5;
+  margin: 0 0.55rem 0.55rem 0;
+  padding: 0.15rem 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none !important;
+}
+
+.filter-editorial .tk-tag__list a:hover,
+.filter-editorial .tk-tag__list a.active,
+.tk-home-main:has(.tk-tag.is-page) .tk-tag__list a:hover,
+.tk-home-main:has(.tk-tag.is-page) .tk-tag__list a.active {
+  transform: none !important;
+  box-shadow: none !important;
+  color: var(--vp-c-brand-1);
+}
+
+@media (max-width: 768px) {
+  .filter-editorial .tk-home-main__content,
+  .tk-home-main:has(.tk-category.is-page) .tk-home-main__content,
+  .tk-home-main:has(.tk-tag.is-page) .tk-home-main__content {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .filter-editorial .tk-home-main__content__info,
+  .tk-home-main:has(.tk-category.is-page) .tk-home-main__content__info,
+  .tk-home-main:has(.tk-tag.is-page) .tk-home-main__content__info {
+    flex: 0 0 34%;
+    width: 100%;
+    max-height: 34%;
+    order: -1;
+  }
+
+  .filter-editorial .tk-home-main__content__post,
+  .tk-home-main:has(.tk-category.is-page) .tk-home-main__content__post,
+  .tk-home-main:has(.tk-tag.is-page) .tk-home-main__content__post {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+  }
+}
+
+/* 文章列表：取消浮卡 / 放大，改成一条连续清单 */
 .tk-home-main .tk-post.is-list > ul {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.tk-home-main .tk-post.is-list .tk-article-title {
-  padding: 0.85rem 1rem 0.85rem 1.35rem !important;
+.tk-home-main .tk-post.is-list > ul > li {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
-.tk-home-main .tk-post.is-list .tk-article-title:before {
-  left: 12px !important;
-  top: 50% !important;
-  transform: translateY(-50%);
-  height: 14px !important;
-  background-color: var(--vp-c-brand-1) !important;
+.tk-home-main .tk-post-item-list,
+.tk-home-main .tk-post.is-list .tk-article-title,
+.tk-home-main .tk-post.is-list .tk-post-item {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  transform: none !important;
+  transition: color 0.15s ease !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--vp-c-text-1) 10%, transparent) !important;
 }
 
-/* 无分页内容时隐藏空壳，避免白底 padding 留一条白条 */
+.tk-home-main .tk-post-item-list:hover,
+.tk-home-main .tk-post.is-list .tk-article-title:hover,
+.tk-home-main .tk-post.is-list .tk-post-item:hover {
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.tk-home-main .tk-post-item-list__left {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.3rem 1.2rem;
+  width: 100%;
+  padding: 0.95rem 0 !important;
+}
+
+.tk-home-main .tk-post-item-list__left__title {
+  flex: 1 1 12rem;
+  font-size: 1.05rem !important;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.5;
+  color: var(--vp-c-text-1);
+}
+
+.tk-home-main .tk-post-item-list__left__title:hover,
+.tk-home-main .tk-post-item-list:hover .tk-post-item-list__left__title {
+  color: var(--vp-c-brand-1);
+}
+
+.tk-home-main .tk-post-item-list__left__footer {
+  margin-top: 0 !important;
+  flex: 0 0 auto;
+}
+
+.tk-home-main .tk-post-item-list__right,
+.tk-home-main .tk-post.is-list .tk-article-title:before,
+.tk-home-main .tk-post-item-list .pin {
+  display: none !important;
+}
+
+.tk-home-main .tk-article-info {
+  font-size: 0.82rem;
+  color: var(--vp-c-text-3) !important;
+}
+
+.tk-home-main .tk-article-info__icon,
+.tk-home-main .tk-article-info__item.or,
+.home-editorial .tk-article-info.post .tk-article-info__item:first-child,
+.tk-home-main:has(.home-persona) .tk-article-info.post .tk-article-info__item:first-child {
+  display: none !important;
+}
+
+.tk-home-main .tk-post.is-list a {
+  text-decoration: none;
+}
+
+/* 无分页内容时隐藏空壳 */
 .tk-home-main .tk-post__pagination:not(:has(.tk-pagination, .el-pagination, .tk-pager)) {
   display: none !important;
 }
 
-/* 分类 / 标签页分页：横向排列，与半透明风格协调 */
+.home-editorial .tk-post__pagination,
+.home-editorial .tk-pagination,
+.home-editorial .el-pagination,
+.tk-home-main:has(.home-persona) .tk-post__pagination,
+.tk-home-main:has(.home-persona) .tk-pagination,
+.tk-home-main:has(.home-persona) .el-pagination {
+  display: none !important;
+}
+
 .tk-home-main .tk-post__pagination:has(.tk-pagination, .el-pagination, .tk-pager) {
-  margin-top: 1.25rem;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  margin-top: 1.5rem;
+  padding: 0.5rem 0;
+  background: transparent;
+  box-shadow: none;
+  border: none;
 }
 
 .tk-home-main .tk-post__pagination .tk-pagination,
@@ -212,100 +625,215 @@
   backdrop-filter: none !important;
 }
 
-/* 仅真正首页隐藏分页（有 Banner）；分类 / 标签页仍保留分页 */
-.tk-home-main:has(.tk-banner) .tk-post__pagination,
-.tk-home-main:has(.tk-banner) .tk-pagination,
-.tk-home-main:has(.tk-banner) .el-pagination {
+@media (max-width: 640px) {
+  .tk-home-main .tk-post-item-list__left {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+}
+
+/* ---------- 文章详情：跟首页同一套白底清单，不要卡片 ---------- */
+.VPContent:not(.is-home) .VPDoc,
+.VPContent:not(.is-home) .VPDoc .container,
+.VPContent:not(.is-home) .VPDoc .content,
+.VPContent:not(.is-home) .VPDoc .content-container,
+.tk-article-page,
+.tk-doc {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.VPDoc h1,
+.vp-doc h1,
+.tk-article-title h1 {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  color: var(--vp-c-text-1) !important;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  border: none !important;
+}
+
+.tk-article-info,
+.tk-article-analyze,
+.tk-article-analyze__wrapper,
+.tk-breadcrumb {
+  color: var(--vp-c-text-3);
+  font-size: 0.82rem;
+}
+
+.tk-article-share__button {
+  width: auto;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--vp-c-brand-1);
+  transform: none !important;
+}
+
+.tk-article-share__button:hover,
+.tk-article-share__button:active,
+.tk-article-share__button.copied {
+  background: transparent !important;
+  transform: none !important;
+}
+
+.tk-article-share__button:before {
+  display: none;
+}
+
+.tk-article-update {
+  margin: 1.5rem 0;
+  border: none;
+  border-radius: 0;
+  border-top: 1px solid var(--home-chat-line);
+}
+
+.tk-article-update__title {
+  padding: 0.85rem 0 0.5rem;
+  border-bottom: none;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.tk-article-update > ul > li {
+  height: auto;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--home-chat-line);
+}
+
+.VPDoc .aside .aside-curtain {
   display: none !important;
 }
 
-.dark .tk-home-main .tk-page-card,
-.dark .tk-home-main .tk-post.is-list .tk-article-title,
-.dark .tk-home-main .tk-post .tk-post-item {
-  background: rgba(45, 45, 45, 0.9) !important;
-  border-color: rgba(255, 255, 255, 0.06) !important;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.55) !important;
+.VPDoc .aside .aside-content .content {
+  background: transparent !important;
+  border-left: 1px solid var(--home-chat-line);
+  border-radius: 0;
 }
 
-.dark .tk-home-main .tk-page-card:hover,
-.dark .tk-home-main .tk-post.is-list .tk-article-title:hover,
-.dark .tk-home-main .tk-post .tk-post-item:hover {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.75) !important;
+.VPDoc .aside .outline-link:hover {
+  transform: none;
 }
 
-.dark .tk-home-main .tk-post__pagination:has(.tk-pagination, .el-pagination, .tk-pager) {
-  background: rgba(45, 45, 45, 0.9);
-  border-color: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+.prev-next {
+  border-top: 1px solid var(--home-chat-line);
 }
 
-/* ---------- About page ---------- */
+.prev-next .pager-link {
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 1rem 0;
+}
+
+.prev-next .pager-link:hover {
+  background: transparent !important;
+}
+
+.VPDocFooter .edit-info {
+  padding-top: 0.5rem;
+}
+
+.tk-comment,
+#waline,
+.wl-cards .wl-card {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.wl-panel {
+  background: color-mix(in srgb, var(--home-chat-bg) 92%, transparent) !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  border: 1px solid var(--home-chat-line) !important;
+}
+
+.tk-footer-info {
+  padding: 1.25rem 1.25rem 1.6rem;
+  background: transparent;
+}
+
+.tk-footer-info__icons a {
+  backdrop-filter: none;
+  background: transparent;
+  transform: none !important;
+}
+
+.tk-footer-info__icons a:hover {
+  background: transparent;
+  transform: none !important;
+}
+
+.tk-footer-info p,
+.tk-footer-info__list {
+  font-size: 0.78rem;
+  font-weight: 400;
+  opacity: 0.72;
+}
+
+/* ---------- About page：与首页同一套编辑式排版 ---------- */
+.about-editorial .VPDoc .container,
+.about-editorial .VPDoc .content,
+.about-editorial .VPDoc .content-container,
+.about-editorial .vp-doc {
+  max-width: 52rem !important;
+  width: min(52rem, 100%) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.about-editorial .vp-doc > h1:first-child,
+.about-editorial .VPDoc .aside {
+  display: none !important;
+}
+
 .about-page {
-  --about-warm: #b57a3a;
-  --about-cream: #f8f3ea;
-  --about-ink: #3d342c;
-  --about-muted: #7a6a58;
-  --about-line: rgba(140, 100, 55, 0.18);
-  --about-hobby-ride: #a86b32;
-  --about-hobby-sport: #9a5538;
-  --about-hobby-outdoor: #7d6b3e;
-  --about-hobby-gear: #8a7260;
-  --about-cert-cf: #c6923a;
-  --about-cert-cs: #a0673c;
-  max-width: none;
-  width: min(1180px, calc(100vw - 72px));
-  margin: 0 auto 2.5rem;
-  padding: 0 0.5rem 1rem;
+  --about-ink: var(--vp-c-text-1);
+  --about-muted: var(--vp-c-text-2);
+  --about-line: color-mix(in srgb, var(--vp-c-text-1) 10%, transparent);
+  max-width: 52rem;
+  margin: 0 auto 3.5rem;
+  padding: 1.25rem 1.25rem 1rem;
   color: var(--about-ink);
 }
 
-/* about 页单独放宽容器（兼容 VitePress / Teek 不同 DOM 结构） */
-.about-wide {
-  --vp-layout-max-width: 1680px;
-}
-
-.about-wide .VPDoc .container,
-.about-wide .VPDoc .content,
-.about-wide .VPDoc .content-container,
-.about-wide .VPDoc .vp-doc,
-.about-wide .vp-doc,
-.about-wide .content-container,
-.about-wide .content-body {
-  max-width: 1180px !important;
-  width: min(1180px, 100%) !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
 .about-hero {
-  position: relative;
-  overflow: hidden;
-  text-align: left;
-  padding: 2.4rem 2rem 2.6rem;
-  border-radius: 18px;
-  border: 1px solid var(--about-line);
-  background:
-    radial-gradient(ellipse 75% 65% at 100% 0%, rgba(201, 150, 80, 0.22), transparent 55%),
-    radial-gradient(ellipse 55% 45% at 0% 100%, rgba(180, 130, 70, 0.12), transparent 50%),
-    linear-gradient(165deg, var(--about-cream) 0%, #f3ebe0 100%);
-  box-shadow: 0 10px 36px rgba(90, 60, 30, 0.08);
+  padding: 0.4rem 0 0;
+  background: none;
+  border: none;
+  box-shadow: none;
 }
 
 .about-kicker {
-  margin: 0 0 0.55rem;
+  margin: 0 0 0.45rem;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--about-warm);
+  color: var(--vp-c-brand-1);
 }
 
 .about-name {
   margin: 0;
-  font-size: clamp(2rem, 5vw, 2.6rem);
-  font-weight: 800;
+  font-size: clamp(1.85rem, 4vw, 2.35rem);
+  font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 1.15;
+  line-height: 1.2;
   color: var(--about-ink);
 }
 
@@ -317,292 +845,107 @@
 }
 
 .about-role {
-  margin: 0.55rem 0 0;
+  margin: 0.5rem 0 0;
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--about-warm);
+  color: var(--vp-c-brand-1);
 }
 
 .about-lead {
-  margin: 1rem 0 0;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--about-muted);
+  margin: 1.15rem 0 0;
+  font-size: 0.98rem;
+  line-height: 1.85;
+  color: var(--about-ink);
 }
 
 .about-motto {
-  margin-top: 1.35rem;
-  padding: 0.85rem 1rem 0.85rem 1.1rem;
-  border-left: 3px solid var(--about-warm);
-  border-radius: 0 12px 12px 0;
-  background: rgba(181, 122, 58, 0.08);
-}
-
-.about-motto-label {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--about-warm);
-  margin-bottom: 0.25rem;
-}
-
-.about-motto-text {
-  margin: 0;
-  font-size: 1.08rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 1.02rem;
   line-height: 1.7;
-  font-weight: 500;
-  color: var(--about-ink);
+  color: var(--about-muted);
 }
 
 .about-section {
-  margin-top: 2.9rem;
+  margin-top: 2.6rem;
 }
 
 .about-section-title {
-  margin: 0 0 0.9rem;
-  font-size: 1.25rem;
+  margin: 0 0 0.55rem;
+  padding: 0;
+  font-size: 1.15rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   color: var(--about-ink);
+  border: none;
   line-height: 1.3;
 }
 
-/* about 页纵向节奏强制覆盖：避免被主题默认标题/段落间距覆盖 */
-.about-wide .about-hero {
-  margin-bottom: 2rem !important;
-  padding-bottom: 2.8rem !important;
-}
-
-.about-wide .about-section {
-  margin-top: 3.2rem !important;
-}
-
-.about-wide .about-section-title {
-  margin-bottom: 1.2rem !important;
-  padding-bottom: 0.15rem !important;
-}
-
-.about-wide .about-hobby-grid {
-  margin-bottom: 1rem !important;
-}
-
 .about-section-title::after {
-  content: "";
-  display: block;
-  width: 2rem;
-  height: 3px;
-  margin-top: 0.55rem;
-  border-radius: 2px;
-  background: var(--about-warm);
+  display: none;
 }
 
 .about-section-desc {
-  margin: 0 0 1.25rem;
-  font-size: 0.92rem;
-  line-height: 1.6;
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
   color: var(--about-muted);
 }
 
-.about-hobby-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin-bottom: 0.4rem;
-}
-
-@media (max-width: 640px) {
-  .about-hobby-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.about-hobby-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  padding: 1.15rem 1.05rem;
-  border-radius: 14px;
-  border: 1px solid var(--about-line);
-  background: var(--about-cream);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-.about-hobby-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(90, 60, 30, 0.1);
-}
-
-.about-hobby-cat {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-.about-hobby-detail {
-  font-size: 0.95rem;
-  line-height: 1.4;
-  font-weight: 500;
-  color: var(--about-ink);
-}
-
-.about-hobby-card--ride {
-  border-top: 3px solid var(--about-hobby-ride);
-  background: linear-gradient(180deg, rgba(168, 107, 50, 0.12) 0%, var(--about-cream) 55%);
-}
-.about-hobby-card--ride .about-hobby-cat {
-  color: var(--about-hobby-ride);
-}
-
-.about-hobby-card--sport {
-  border-top: 3px solid var(--about-hobby-sport);
-  background: linear-gradient(180deg, rgba(154, 85, 56, 0.12) 0%, var(--about-cream) 55%);
-}
-.about-hobby-card--sport .about-hobby-cat {
-  color: var(--about-hobby-sport);
-}
-
-.about-hobby-card--outdoor {
-  border-top: 3px solid var(--about-hobby-outdoor);
-  background: linear-gradient(180deg, rgba(125, 107, 62, 0.12) 0%, var(--about-cream) 55%);
-}
-.about-hobby-card--outdoor .about-hobby-cat {
-  color: var(--about-hobby-outdoor);
-}
-
-.about-hobby-card--gear {
-  border-top: 3px solid var(--about-hobby-gear);
-  background: linear-gradient(180deg, rgba(138, 114, 96, 0.14) 0%, var(--about-cream) 55%);
-}
-.about-hobby-card--gear .about-hobby-cat {
-  color: var(--about-hobby-gear);
-}
-
-.about-cert-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-.about-cert {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.05rem 1.2rem;
-  border-radius: 14px;
-  border: 1px solid var(--about-line);
-  background: var(--about-cream);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-.about-cert:hover {
-  transform: translateY(-3px);
-}
-
-.about-cert-badge {
-  flex-shrink: 0;
-  width: 3rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  font-size: 0.85rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: #fff;
-}
-
-.about-cert-body {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.about-cert-game {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--about-muted);
-}
-
-.about-cert-title {
-  font-size: 1.08rem;
-  font-weight: 700;
-  color: var(--about-ink);
-  line-height: 1.35;
-}
-
-.about-cert-tag {
-  flex-shrink: 0;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  padding: 0.35rem 0.65rem;
-  border-radius: 8px;
-}
-
-.about-cert--cf {
-  background: linear-gradient(105deg, rgba(198, 146, 58, 0.16) 0%, var(--about-cream) 48%);
-}
-.about-cert--cf .about-cert-badge {
-  background: linear-gradient(145deg, #dbb15a, var(--about-cert-cf));
-}
-.about-cert--cf .about-cert-tag {
-  color: #a0782e;
-  background: rgba(198, 146, 58, 0.18);
-}
-
-.about-cert--cs {
-  background: linear-gradient(105deg, rgba(160, 103, 60, 0.14) 0%, var(--about-cream) 48%);
-}
-.about-cert--cs .about-cert-badge {
-  background: linear-gradient(145deg, #c48955, var(--about-cert-cs));
-}
-.about-cert--cs .about-cert-tag {
-  color: #8a5633;
-  background: rgba(160, 103, 60, 0.16);
-}
-
+.about-hobby-list,
+.about-cert-list,
 .about-contact-list {
   list-style: none;
-  padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
+  padding: 0;
 }
 
+.about-hobby-list li,
+.about-cert-list li,
 .about-contact-list li {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem 1rem;
-  padding: 1rem 1.15rem;
-  border-radius: 14px;
-  border: 1px solid var(--about-line);
-  background: linear-gradient(180deg, rgba(255, 250, 242, 0.9) 0%, var(--about-cream) 100%);
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  align-items: baseline;
+  gap: 0.35rem 1rem;
+  margin: 0;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--about-line);
+  background: none;
+  box-shadow: none;
+  transform: none;
 }
 
-.about-contact-list li:hover {
-  border-color: rgba(181, 122, 58, 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(90, 60, 30, 0.08);
-}
-
-.about-contact-label {
-  min-width: 5.5rem;
+.about-hobby-cat,
+.about-contact-label,
+.about-cert-game {
+  flex: 0 0 5.6rem;
   font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
+  font-weight: 600;
   color: var(--about-muted);
 }
 
+.about-hobby-detail,
+.about-cert-title {
+  flex: 1 1 8rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--about-ink);
+  line-height: 1.45;
+}
+
+.about-cert-tag {
+  margin-left: auto;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--about-muted);
+  background: none;
+  padding: 0;
+}
+
 .about-contact-link {
-  color: var(--about-warm) !important;
+  color: var(--vp-c-brand-1) !important;
   text-decoration: none;
   font-weight: 600;
   word-break: break-all;
@@ -610,63 +953,142 @@
 
 .about-contact-link:hover {
   text-decoration: underline;
+  text-underline-offset: 0.18em;
 }
 
 .dark .about-page {
   color: var(--vp-c-text-1);
 }
 
-.dark .about-hero {
-  border-color: rgba(201, 150, 80, 0.2);
-  background:
-    radial-gradient(ellipse 75% 65% at 100% 0%, rgba(201, 150, 80, 0.14), transparent 55%),
-    radial-gradient(ellipse 55% 45% at 0% 100%, rgba(160, 110, 60, 0.08), transparent 50%),
-    linear-gradient(165deg, #2a2622 0%, #322c26 100%);
-  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.4);
+@media (max-width: 480px) {
+  .about-hobby-cat,
+  .about-contact-label,
+  .about-cert-game {
+    flex-basis: 100%;
+  }
+
+  .about-cert-tag {
+    margin-left: 0;
+  }
 }
 
-.dark .about-name,
-.dark .about-motto-text,
-.dark .about-section-title,
-.dark .about-hobby-detail,
-.dark .about-cert-title {
+/* ---------- 归档页：与首页同一套清单 ---------- */
+html:has(.tk-archives) .tk-article-page,
+html:has(.tk-archives) .tk-doc,
+.archives-editorial .VPContent,
+.archives-editorial .content-container {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  max-width: none !important;
+}
+
+.tk-archives {
+  max-width: 52rem;
+  margin: 0 auto 3.5rem;
+  padding: 1.25rem 1.25rem 1rem;
+}
+
+.tk-archives__header {
+  align-items: baseline;
+  margin-bottom: 0.35rem;
+}
+
+.tk-archives__header h1 {
+  margin: 0;
+  font-size: clamp(1.85rem, 4vw, 2.35rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  border: none;
+}
+
+.tk-archives .count {
+  font-size: 0.86rem;
+  font-style: normal;
+  font-weight: 500;
+  opacity: 0.5;
+}
+
+.tk-archives__timeline {
+  margin: 0.5rem 0 0;
+}
+
+.tk-archives__timeline--year {
+  margin-top: 2.4rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--vp-c-text-1) 10%, transparent);
+  background-color: color-mix(in srgb, var(--home-chat-bg, #fff) 92%, transparent) !important;
+}
+
+.tk-archives__timeline--year .year {
+  padding: 0.7rem 0 0.55rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.tk-archives__timeline__m {
+  margin-top: 0.35rem;
+}
+
+.tk-archives__timeline__m--month {
+  margin-top: 1.35rem;
+  border-bottom: none;
+}
+
+.tk-archives__timeline__m--month .month {
+  padding-bottom: 0.2rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--vp-c-text-1);
 }
 
-.dark .about-lead,
-.dark .about-section-desc,
-.dark .about-cert-game,
-.dark .about-contact-label {
-  color: var(--vp-c-text-2);
+.tk-archives__timeline__m--month .count,
+.tk-archives__timeline--year .count {
+  font-size: 1rem;
+  font-weight: 700;
+  opacity: 0.82;
+  color: var(--vp-c-text-1);
 }
 
-.dark .about-kicker,
-.dark .about-role,
-.dark .about-motto-label,
-.dark .about-contact-link {
-  color: #d4a56a !important;
+.tk-archives__timeline__m ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.dark .about-motto {
-  background: rgba(255, 220, 160, 0.06);
-  border-left-color: #c6923a;
+.tk-archives__timeline__m ul li {
+  line-height: 1.5;
+  margin: 0;
 }
 
-.dark .about-hobby-card,
-.dark .about-cert,
-.dark .about-contact-list li {
-  background: #2d2925;
-  border-color: rgba(201, 150, 80, 0.16);
+.tk-archives__timeline__m ul li a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--vp-c-text-1) 10%, transparent);
+  text-decoration: none;
+  color: var(--vp-c-text-1);
+  transition: color 0.15s ease;
 }
 
-@media (max-width: 480px) {
-  .about-hero {
-    padding: 1.75rem 1.25rem 1.6rem;
-  }
-  .about-cert {
-    flex-wrap: wrap;
-  }
-  .about-cert-tag {
-    margin-left: auto;
-  }
+.tk-archives__timeline__m ul li a:hover {
+  padding-left: 0;
+  background: transparent;
+  color: var(--vp-c-brand-1);
+}
+
+.tk-archives__timeline__m ul li a .date {
+  order: 2;
+  flex-shrink: 0;
+  margin-right: 0;
+  font-size: 0.82rem;
+  opacity: 0.5;
+}
+
+html.dark .tk-archives__timeline--year {
+  background-color: color-mix(in srgb, var(--home-chat-bg, #141414) 92%, transparent) !important;
 }

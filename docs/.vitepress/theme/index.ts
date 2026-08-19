@@ -5,7 +5,6 @@ import "vitepress-theme-teek/theme-chalk/tk-code-block-mobile.css";
 import "vitepress-theme-teek/theme-chalk/tk-sidebar.css";
 import "vitepress-theme-teek/theme-chalk/tk-nav.css";
 import "vitepress-theme-teek/theme-chalk/tk-aside.css";
-import "vitepress-theme-teek/theme-chalk/tk-doc-h1-gradient.css";
 import "vitepress-theme-teek/theme-chalk/tk-comment-waline.css";
 import "./style.css";
 import HomePersona from "./components/HomePersona.vue";

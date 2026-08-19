@@ -1,6 +1,7 @@
 ---
 layout: home
+pageClass: home-editorial
 tk:
   page:
-    pageSize: 10
+    pageSize: 200
 ---

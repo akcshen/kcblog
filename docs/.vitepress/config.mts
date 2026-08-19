@@ -20,36 +20,22 @@ const teekConfig = defineTeekConfig({
   },
   blogger: {
     name: "kcqingfeng",
-    // slogan: "工作开心不加班",
     avatar:
       "https://cdn.jsdelivr.net/gh/akcshen/chartBed@master/assets/img/202303141847699.jpeg",
-    shape: "circle-rotate",
+    shape: "circle",
   },
-  // 贴近旧站 vdoing：全页 body 背景图 + 中等高 Banner（非 100vh）+ 深色标题字
+  // 首页走编辑式排版（介绍 + 连续列表），不再用 Banner / 全页壁纸
   banner: {
-    name: "Kc's blog",
-    description: "工作开心不加班，生活快乐无忧虑",
-    bgStyle: "pure",
-    pureBgColor: "transparent",
-    textColor: "#004050",
-    titleFontSize: "2.6rem",
-    descFontSize: "1.15rem",
-    descStyle: "types",
-    imgWaves: false,
+    enabled: false,
   },
-  bodyBgImg: {
-    imgSrc: "https://img.kcshen.cn/assets/img/21bda4d32.jpeg",
-    mask: false,
-    bannerStyle: "part",
-  },
-  // 对应旧站 postList: simple —— 列表风、不截摘要；首页只展示最近 10 条、不要分页
   post: {
     postStyle: "list",
     showMore: false,
     showCapture: false,
+    transition: false,
   },
   page: {
-    pageSize: 10,
+    pageSize: 200,
   },
   topArticle: {
     enabled: true,

@@ -3,7 +3,7 @@ title: 关于
 date: 2019-12-26 14:27:01
 sidebar: false
 article: false
-pageClass: about-wide
+pageClass: about-editorial
 permalink: /pages/bdd7b7
 categories:
   - 
@@ -12,62 +12,40 @@ categories:
 <div class="about-page">
 
 <section class="about-hero">
-  <p class="about-kicker">Hello · About</p>
+  <p class="about-kicker">About</p>
   <h2 class="about-name">KC <span class="about-name-alias">Casie</span></h2>
   <p class="about-role">前端工程师</p>
   <p class="about-lead">
-    大家好，我是一名<s>热衷</s>于前端开发的工程师。<br>
-    写代码、骑摩托、打游戏，偶尔也折腾点有意思的东西。
+    大家好，我是一名<s>热衷</s>于前端开发的工程师。写代码、骑摩托、打游戏，偶尔也折腾点有意思的东西。
   </p>
-  <div class="about-motto">
-    <span class="about-motto-label">一点追求</span>
-    <p class="about-motto-text">工作开心不加班，生活快乐无忧虑。</p>
-  </div>
+  <p class="about-motto">工作开心不加班，生活快乐无忧虑。</p>
 </section>
 
 <section class="about-section">
   <h3 class="about-section-title">爱好</h3>
-  <div class="about-hobby-grid">
-    <div class="about-hobby-card about-hobby-card--ride">
-      <span class="about-hobby-cat">骑行</span>
-      <span class="about-hobby-detail">摩托车</span>
-    </div>
-    <div class="about-hobby-card about-hobby-card--sport">
-      <span class="about-hobby-cat">运动</span>
-      <span class="about-hobby-detail">篮球</span>
-    </div>
-    <div class="about-hobby-card about-hobby-card--outdoor">
-      <span class="about-hobby-cat">户外</span>
-      <span class="about-hobby-detail">露营、爬山</span>
-    </div>
-    <div class="about-hobby-card about-hobby-card--gear">
-      <span class="about-hobby-cat">折腾</span>
-      <span class="about-hobby-detail">无人机</span>
-    </div>
-  </div>
+  <ul class="about-hobby-list">
+    <li><span class="about-hobby-cat">骑行</span><span class="about-hobby-detail">摩托车</span></li>
+    <li><span class="about-hobby-cat">运动</span><span class="about-hobby-detail">篮球</span></li>
+    <li><span class="about-hobby-cat">户外</span><span class="about-hobby-detail">露营、爬山</span></li>
+    <li><span class="about-hobby-cat">折腾</span><span class="about-hobby-detail">无人机</span></li>
+  </ul>
 </section>
 
 <section class="about-section">
   <h3 class="about-section-title">证书</h3>
   <p class="about-section-desc">游戏里认真打出来的牌子，也算一种勋章。</p>
-  <div class="about-cert-list">
-    <div class="about-cert about-cert--cf">
-      <div class="about-cert-badge">CF</div>
-      <div class="about-cert-body">
-        <span class="about-cert-game">穿越火线</span>
-        <strong class="about-cert-title">枪王之王</strong>
-      </div>
+  <ul class="about-cert-list">
+    <li>
+      <span class="about-cert-game">穿越火线</span>
+      <strong class="about-cert-title">枪王之王</strong>
       <span class="about-cert-tag">殿堂级</span>
-    </div>
-    <div class="about-cert about-cert--cs">
-      <div class="about-cert-badge">CS</div>
-      <div class="about-cert-body">
-        <span class="about-cert-game">Counter-Strike</span>
-        <strong class="about-cert-title">准 S 哥（C+）</strong>
-      </div>
+    </li>
+    <li>
+      <span class="about-cert-game">Counter-Strike</span>
+      <strong class="about-cert-title">准 S 哥（B+）</strong>
       <span class="about-cert-tag">高分段</span>
-    </div>
-  </div>
+    </li>
+  </ul>
 </section>
 
 <section class="about-section" id="联系">

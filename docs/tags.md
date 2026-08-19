@@ -5,4 +5,5 @@ layout: home
 tagsPage: true
 article: false
 sidebar: false
+pageClass: filter-editorial
 ---

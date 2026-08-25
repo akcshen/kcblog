@@ -24,10 +24,10 @@ categories:
 <section class="about-section">
   <h3 class="about-section-title">爱好</h3>
   <ul class="about-hobby-list">
-    <li><span class="about-hobby-cat">骑行</span><span class="about-hobby-detail">摩托车</span></li>
-    <li><span class="about-hobby-cat">运动</span><span class="about-hobby-detail">篮球</span></li>
-    <li><span class="about-hobby-cat">户外</span><span class="about-hobby-detail">露营、爬山</span></li>
-    <li><span class="about-hobby-cat">折腾</span><span class="about-hobby-detail">无人机</span></li>
+    <li><span class="about-hobby-cat">骑行</span><span class="about-hobby-detail">自行车、摩托车</span></li>
+    <li><span class="about-hobby-cat">运动</span><span class="about-hobby-detail">乒乓、篮球</span></li>
+    <li><span class="about-hobby-cat">户外</span><span class="about-hobby-detail">露营、酷爱爬山（拿下五岳版）</span></li>
+    <li><span class="about-hobby-cat">折腾</span><span class="about-hobby-detail">无人机、猫砂盆</span></li>
   </ul>
 </section>
 

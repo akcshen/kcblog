@@ -4,7 +4,7 @@ KC 的个人博客站点源码，基于 [VitePress](https://vitepress.dev/) 与 
 
 ## 环境要求
 
-- Node.js **22.12.0**（见仓库根目录 `.nvmrc`）
+- Node.js **24.19.0**（见仓库根目录 `.nvmrc`）
 - 推荐使用 [fnm](https://github.com/Schniz/fnm) / nvm 切换版本：
 
 ```bash
@@ -66,6 +66,60 @@ npm run deploy
 
 未配置该 Secret 时，该步骤会跳过在线推送（构建与部署仍会成功）。本地可复制 `.baidu-push.env.example` 为 `.baidu-push.env` 并自行填写 token（该文件已加入 `.gitignore`）。
 
+## 文档目录
+
+文章放在 `docs/` 下。侧栏按**文件路径**自动生成，一级目录就是站点栏目。写新文章时放到对应分类即可。
+
+### 站点页与工程目录
+
+| 路径 | 放什么 |
+|------|--------|
+| `docs/index.md` | 首页（文章列表） |
+| `docs/about.md` | 关于页 |
+| `docs/archives.md` | 归档 |
+| `docs/categories.md` | 分类索引 |
+| `docs/tags.md` | 标签索引 |
+| `docs/.vitepress/` | 站点配置、主题、侧栏映射 |
+| `docs/public/` | 静态资源（logo、favicon、配图） |
+
+### 文章栏目
+
+```
+docs/
+├── github/          开发工具与工作流
+│   ├── Git/         Git 规范、手册、分支、squash、换行符
+│   ├── 工具/        Markdown、npm、nrm、OpenVPN、Node 代理、YAML
+│   ├── 调试/        浏览器调试、adb、跨域
+│   └── 实操/        GitHub 工作流
+├── Vue/
+│   └── Vue3/        Vue3 专题
+├── 多端/            端侧开发
+│   ├── 快应用/
+│   ├── 小程序/
+│   │   ├── 微信小程序/
+│   │   └── 支付宝小程序/
+│   ├── 移动端/      flex、popstate 等
+│   └── 测试/        Playwright E2E
+├── 收藏/            可复用资料（导航「收藏」指向这里）
+│   ├── 面试/
+│   ├── 提前下班小妙招/   npm 库、AI 开源
+│   └── node版本的切换/   fnm / nvm
+├── _posts/
+│   └── 随笔/        随笔、定时任务、CSS 等
+├── 更多/            不好单独成栏的内容
+│   ├── AI/          Claude Code、Cursor、OpenSpec 等
+│   ├── 服务器实例/  GCP、Cloudflare、Clash、WOL
+│   ├── 部署/        Docker + Nginx / SFTP
+│   ├── 实用技巧/    效率方法、环境、脚本、设备
+│   ├── 学习/        术语、内网穿透、搜索、地图可视化
+│   ├── 心情杂货/    生活杂记
+│   ├── 辅警/        辅警面试与押题
+│   └── 产品/        推广
+├── 财务/            记账、报税
+└── game时间/
+    └── csgo/        游戏相关
+```
+
 ## 关于作者与站点
 
-个人介绍与联系方式见站内 [关于页面](https://kcshen.cn/about)；编辑内容可打开仓库里的 [01.关于.md](docs/_posts/随笔/01.关于.md)。
+个人介绍与联系方式见站内 [关于页面](https://kcshen.cn/about)；编辑内容可打开仓库里的 [about.md](docs/about.md)。

@@ -5,8 +5,7 @@ sidebar: false
 article: false
 pageClass: about-editorial
 permalink: /pages/bdd7b7
-categories:
-  - 
+categories: []
 ---
 
 <div class="about-page">
@@ -62,6 +61,10 @@ categories:
     <li>
       <span class="about-contact-label">GitHub</span>
       <a class="about-contact-link" href="https://github.com/akcshen" target="_blank" rel="noopener noreferrer">github.com/akcshen</a>
+    </li>
+    <li>
+      <span class="about-contact-label">隐私</span>
+      <a class="about-contact-link" href="/privacy">隐私政策</a>
     </li>
   </ul>
 </section>

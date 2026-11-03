@@ -31,9 +31,9 @@ const persona = {
     { label: "看剧", href: "https://tv.kcshen.cn" },
   ],
   picks: [
-    { title: "Claude Code 使用指南", href: "/pages/b8c4e2/" },
-    { title: "2 分钟规则", href: "/pages/baaa02/" },
-    { title: "AI 相关开源", href: "/pages/9f3e2a/" },
+    { title: "Claude Code 使用指南", href: "/更多/AI/04.Claude Code 使用指南" },
+    { title: "Superpowers 使用指南", href: "/更多/AI/03.Superpowers使用指南" },
+    { title: "Node 版本管理", href: "/收藏/node版本的切换/01.Node版本管理-fnm与nvm" },
   ],
 };
 </script>

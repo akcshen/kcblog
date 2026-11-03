@@ -1,8 +1,8 @@
 /**
- * 生成百度链接推送文件
- * 1) frontmatter.permalink
- * 2) Teek createRewrites 真实路由
- * 3) 去序号路径推导（兜底）
+ * 生成百度链接推送文件。
+ * 站点已关闭 Teek permalink 重写，线上路由就是 docs 下的文件路径。
+ * frontmatter.permalink（/pages/xxx）目前会 404，不能再优先推送。
+ * sitemap: false / robots noindex 的页面不推送。
  */
 const fs = require("fs");
 const path = require("path");
@@ -28,54 +28,38 @@ function normalizePath(urlPath) {
   return p;
 }
 
-function pathFromFile(filePath) {
+function routeFromFile(filePath) {
   const rel = path.relative(docsRoot, filePath).replace(/\\/g, "/");
-  const withoutExt = rel.replace(/\.md$/i, "");
-  const segments = withoutExt.split("/").map((seg) => seg.replace(/^\d+\./, ""));
-  let url = "/" + segments.join("/");
+  let url = "/" + rel.replace(/\.md$/i, "");
   if (url.endsWith("/index")) url = url.slice(0, -"/index".length) || "/";
   return normalizePath(url);
 }
 
-function buildRewriteMap(rewrites) {
-  const map = {};
-  for (const [file, dest] of Object.entries(rewrites || {})) {
-    if (file === "__create__") continue;
-    const key = String(file).replace(/\\/g, "/");
-    const destPath =
-      "/" +
-      String(dest)
-        .replace(/\.md$/i, "")
-        .replace(/\/index$/i, "");
-    map[key] = normalizePath(destPath);
-  }
-  return map;
+function isNoindex(data) {
+  if (data.sitemap === false) return true;
+  if (!Array.isArray(data.head)) return false;
+  return data.head.some((entry) => {
+    if (!Array.isArray(entry) || entry[0] !== "meta") return false;
+    const attrs = entry[1] || {};
+    return (
+      attrs.name === "robots" &&
+      typeof attrs.content === "string" &&
+      /noindex/i.test(attrs.content)
+    );
+  });
 }
 
 async function main() {
   const domain = DOMAIN.replace(/\/$/, "");
   const urls = new Set([domain + "/"]);
-
-  let rewriteMap = {};
-  try {
-    const { createRewrites } = await import("vitepress-theme-teek/config");
-    const raw = createRewrites({ srcDir: "docs" });
-    const { __create__, ...rewrites } = raw;
-    rewriteMap = buildRewriteMap(rewrites);
-  } catch (err) {
-    console.warn("未能加载 Teek rewrites，将回退去序号路径：", err.message);
-  }
-
   const files = readFileList();
 
   files.forEach((file) => {
-    const rel = path.relative(docsRoot, file.filePath).replace(/\\/g, "/");
     const { data } = matter(fs.readFileSync(file.filePath, "utf8"));
-    const permalink = data.permalink
-      ? normalizePath(data.permalink)
-      : rewriteMap[rel] || pathFromFile(file.filePath);
-    if (!permalink) return;
-    const link = `${domain}${permalink === "/" ? "/" : permalink}`;
+    if (isNoindex(data)) return;
+    const livePath = routeFromFile(file.filePath);
+    if (!livePath) return;
+    const link = `${domain}${livePath === "/" ? "/" : livePath}`;
     urls.add(link);
   });
 

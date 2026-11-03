@@ -7,6 +7,5 @@ layout: page
 article: false
 sidebar: false
 pageClass: archives-editorial
-categories:
-  - 
+categories: []
 ---

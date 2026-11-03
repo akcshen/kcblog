@@ -1,3 +1,6 @@
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "vitepress";
 import { defineTeekConfig } from "vitepress-theme-teek/config";
 // 勿从主包 import：会连带加载 vitepress/theme，Node 解析 without-fonts 失败
@@ -77,6 +80,7 @@ const teekConfig = defineTeekConfig({
     },
   ],
   footerInfo: {
+    topMessage: ['<a href="/privacy">隐私政策</a>'],
     copyright: {
       createYear: 2019,
       suffix: "kc shen | MIT License",
@@ -120,7 +124,25 @@ const teekConfig = defineTeekConfig({
       resolveRule: "filePath",
       collapsed: false,
       titleFormMd: true,
-      ignoreList: ["archives", "categories", "tags"],
+      ignoreList: [
+        "archives",
+        "categories",
+        "tags",
+        // 低价值 / 不宜作为公开索引的文章：页面仍可直链访问，但不进侧栏
+        "01.2分钟规则.md",
+        "07.面试问题集锦.md",
+        "02.AI相关开源.md",
+        "07.债务问题.md",
+        "06.女朋友对我的不满.md",
+        "01.辅警面试题.md",
+        "02.辅警新版本.md",
+        "03.答题套路.md",
+        "04.押题.md",
+        "10.搜索引擎使用技巧.md",
+        "10.一行代码“黑”掉任意网站.md",
+        "10.反向拆解让人上瘾的套路，找回自律.md",
+        "05.Vite Proxy、Node 代理环境变量与 Clash 分流不生效问题排查.md",
+      ],
     },
     docAnalysis: true,
     autoFrontmatter: true,
@@ -219,12 +241,46 @@ export default defineConfig({
         text: "收藏",
         items: [
           { text: "好用的组件库", link: "/收藏/提前下班小妙招/01.好用的npm库" },
-          { text: "AI 相关开源", link: "/收藏/提前下班小妙招/02.AI相关开源" },
+          { text: "虚拟列表", link: "/收藏/面试/04.虚拟列表实现原理与优化方案" },
           { text: "Node 版本管理", link: "/收藏/node版本的切换/01.Node版本管理-fnm与nvm" },
           { text: "面试收藏", link: "/收藏/面试/01.面试问答" },
         ],
       },
       { text: "关于", link: "/about" },
+      { text: "隐私政策", link: "/privacy" },
     ],
   },
+  sitemap: {
+    hostname: "https://kcshen.cn",
+    transformItems(items) {
+      return items.filter((item) => !isExcludedFromSitemap(item.url));
+    },
+  },
 });
+
+const docsDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+
+function pageFileFromSitemapUrl(url: string): string | undefined {
+  let pathname = url.split("?")[0].split("#")[0];
+  try {
+    pathname = decodeURIComponent(pathname);
+  } catch {
+    // 保留原始路径
+  }
+  pathname = pathname.replace(/^\//, "").replace(/\/$/, "");
+  if (!pathname || pathname === "index") return path.join(docsDir, "index.md");
+  const candidates = [
+    path.join(docsDir, `${pathname}.md`),
+    path.join(docsDir, pathname, "index.md"),
+  ];
+  return candidates.find((file) => fs.existsSync(file));
+}
+
+/** frontmatter `sitemap: false` 或 robots noindex 的页面不进 sitemap。 */
+function isExcludedFromSitemap(url: string): boolean {
+  const file = pageFileFromSitemapUrl(url);
+  if (!file) return false;
+  const source = fs.readFileSync(file, "utf8");
+  const frontmatter = source.match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? "";
+  return /^sitemap:\s*false\s*$/m.test(frontmatter) || /content:\s*noindex\b/i.test(frontmatter);
+}
